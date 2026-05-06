@@ -38,7 +38,7 @@
 <body>
 
 @auth
-    {{-- Sidebar hanya muncul kalau sudah login --}}
+    {{-- Sidebar hanya muncul jika sudah login --}}
     <div class="sidebar">
         <span class="brand">
             <i class="bi bi-heart-fill text-danger"></i> PawHome BJM

@@ -27,7 +27,7 @@ class DatabaseSeeder extends Seeder
 
         //buat akun adopter
         User::create([
-            'name' => 'Felicia',
+            'name' => 'Felicia Scamender',
             'email' => 'feliciascamender@gmail.com',
             'password' => bcrypt('rafayelmwah'),
             'role' => 'adopter',

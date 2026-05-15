@@ -6,97 +6,129 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('title', 'PawHome Banjarmasin')</title>
 
-    {{-- Bootstrap 5 CSS --}}
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    {{-- Bootstrap Icons --}}
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+    {{-- Tailwind + app CSS via Vite --}}
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 
-    <style>
-        body { background-color: #f8f9fa; }
-        .sidebar {
-            min-height: 100vh;
-            background-color: #212529;
-            width: 240px;
-            position: fixed;
-            top: 0; left: 0;
-            padding-top: 1rem;
-            z-index: 100;
-        }
-        .sidebar .nav-link { color: #adb5bd; padding: 0.6rem 1.25rem; }
-        .sidebar .nav-link:hover,
-        .sidebar .nav-link.active { color: #fff; background-color: #343a40; border-radius: 6px; }
-        .sidebar .brand { color: #fff; font-weight: 600; font-size: 1.1rem; padding: 0.5rem 1.25rem 1.5rem; display: block; }
-        .main-content { margin-left: 240px; padding: 2rem; }
-        @media (max-width: 768px) {
-            .sidebar { display: none; }
-            .main-content { margin-left: 0; }
-        }
-    </style>
+    {{-- jQuery via CDN (tetap dipakai) --}}
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
 
     @stack('styles')
 </head>
-<body>
+<body class="bg-gray-50 text-gray-900">
 
 @auth
-    {{-- Sidebar hanya muncul jika sudah login --}}
-    <div class="sidebar">
-        <span class="brand">
-            <i class="bi bi-heart-fill text-danger"></i> PawHome BJM
-        </span>
-        <nav class="nav flex-column px-2">
+<div class="flex min-h-screen">
+
+    {{-- SIDEBAR --}}
+    <aside class="w-60 bg-slate-900 fixed top-0 left-0 h-full z-50 flex flex-col">
+        {{-- Brand --}}
+        <div class="px-5 py-5 border-b border-slate-700">
+            <span class="text-white font-bold text-lg flex items-center gap-2">
+                🐾 PawHome BJM
+            </span>
+            <span class="text-slate-400 text-xs mt-1 block">Adopsi Hewan Banjarmasin</span>
+        </div>
+
+        {{-- Menu --}}
+        <nav class="flex-1 px-3 py-4 space-y-1 overflow-y-auto">
             @if(auth()->user()->role === 'admin')
-                <a class="nav-link {{ request()->is('admin/dashboard') ? 'active' : '' }}"
-                   href="{{ route('admin.dashboard') }}">
-                    <i class="bi bi-speedometer2 me-2"></i> Dashboard
+                <a href="{{ route('admin.dashboard') }}"
+                   class="flex items-center gap-3 px-3 py-2 rounded-lg text-sm
+                          {{ request()->is('admin/dashboard') ? 'bg-pink-600 text-white' : 'text-slate-300 hover:bg-slate-800 hover:text-white' }}
+                          transition-colors duration-150">
+                    📊 Dashboard
                 </a>
-                <a class="nav-link {{ request()->is('admin/species*') ? 'active' : '' }}"
-                   href="{{ route('admin.species.index') }}">
-                    <i class="bi bi-tags me-2"></i> Spesies
+                <a href="{{ route('admin.species.index') }}"
+                   class="flex items-center gap-3 px-3 py-2 rounded-lg text-sm
+                          {{ request()->is('admin/species*') ? 'bg-pink-600 text-white' : 'text-slate-300 hover:bg-slate-800 hover:text-white' }}
+                          transition-colors duration-150">
+                    🏷️ Spesies
                 </a>
-                <a class="nav-link {{ request()->is('admin/animals*') ? 'active' : '' }}"
-                   href="{{ route('admin.animals.index') }}">
-                    <i class="bi bi-star me-2"></i> Hewan
+                <a href="{{ route('admin.animals.index') }}"
+                   class="flex items-center gap-3 px-3 py-2 rounded-lg text-sm
+                          {{ request()->is('admin/animals*') ? 'bg-pink-600 text-white' : 'text-slate-300 hover:bg-slate-800 hover:text-white' }}
+                          transition-colors duration-150">
+                    🐱 Hewan
                 </a>
-                <a class="nav-link {{ request()->is('admin/adoptions*') ? 'active' : '' }}"
-                   href="{{ route('admin.adoptions.index') }}">
-                    <i class="bi bi-clipboard-check me-2"></i> Pengajuan Adopsi
+                <a href="{{ route('admin.adoptions.index') }}"
+                   class="flex items-center gap-3 px-3 py-2 rounded-lg text-sm
+                          {{ request()->is('admin/adoptions*') ? 'bg-pink-600 text-white' : 'text-slate-300 hover:bg-slate-800 hover:text-white' }}
+                          transition-colors duration-150">
+                    📋 Pengajuan Adopsi
                 </a>
             @else
-                <a class="nav-link {{ request()->is('adopter/dashboard') ? 'active' : '' }}"
-                   href="{{ route('adopter.dashboard') }}">
-                    <i class="bi bi-speedometer2 me-2"></i> Dashboard
+                <a href="{{ route('adopter.dashboard') }}"
+                   class="flex items-center gap-3 px-3 py-2 rounded-lg text-sm
+                          {{ request()->is('adopter/dashboard') ? 'bg-pink-600 text-white' : 'text-slate-300 hover:bg-slate-800 hover:text-white' }}
+                          transition-colors duration-150">
+                    📊 Dashboard
                 </a>
-                <a class="nav-link {{ request()->is('animals*') ? 'active' : '' }}"
-                   href="{{ route('animals.index') }}">
-                    <i class="bi bi-search me-2"></i> Cari Hewan
+                <a href="{{ route('animals.index') }}"
+                   class="flex items-center gap-3 px-3 py-2 rounded-lg text-sm
+                          {{ request()->is('animals*') ? 'bg-pink-600 text-white' : 'text-slate-300 hover:bg-slate-800 hover:text-white' }}
+                          transition-colors duration-150">
+                    🔍 Cari Hewan
                 </a>
-                <a class="nav-link {{ request()->is('adopter/adoptions*') ? 'active' : '' }}"
-                   href="{{ route('adopter.adoptions.index') }}">
-                    <i class="bi bi-journal-text me-2"></i> Pengajuan Saya
+                <a href="{{ route('adopter.adoptions.index') }}"
+                   class="flex items-center gap-3 px-3 py-2 rounded-lg text-sm
+                          {{ request()->is('adopter/adoptions*') ? 'bg-pink-600 text-white' : 'text-slate-300 hover:bg-slate-800 hover:text-white' }}
+                          transition-colors duration-150">
+                    📝 Pengajuan Saya
                 </a>
             @endif
+        </nav>
 
-            <hr style="border-color:#495057; margin: 1rem 0.75rem;">
-
+        {{-- User info + Logout --}}
+        <div class="px-3 py-4 border-t border-slate-700">
+            <div class="px-3 mb-3">
+                <p class="text-white text-sm font-medium truncate">{{ auth()->user()->name }}</p>
+                <p class="text-slate-400 text-xs capitalize">{{ auth()->user()->role }}</p>
+            </div>
             <form method="POST" action="{{ route('logout') }}">
                 @csrf
-                <button type="submit" class="nav-link border-0 bg-transparent text-start w-100">
-                    <i class="bi bi-box-arrow-left me-2"></i> Logout
+                <button type="submit"
+                        class="w-full flex items-center gap-3 px-3 py-2 rounded-lg text-sm
+                               text-slate-300 hover:bg-red-600 hover:text-white
+                               transition-colors duration-150">
+                    🚪 Logout
                 </button>
             </form>
-        </nav>
-    </div>
+        </div>
+    </aside>
+
+    {{-- KONTEN UTAMA --}}
+    <main class="ml-60 flex-1 p-8">
+        {{-- Flash message --}}
+        @if(session('success'))
+            <div id="flash-success"
+                 class="mb-6 flex items-center gap-3 bg-green-50 border border-green-200
+                        text-green-800 px-4 py-3 rounded-lg text-sm">
+                ✅ {{ session('success') }}
+            </div>
+        @endif
+        @if(session('error'))
+            <div id="flash-error"
+                 class="mb-6 flex items-center gap-3 bg-red-50 border border-red-200
+                        text-red-800 px-4 py-3 rounded-lg text-sm">
+                ❌ {{ session('error') }}
+            </div>
+        @endif
+
+        @yield('content')
+    </main>
+
+</div>
+@else
+    {{-- Halaman publik (belum login) tidak pakai sidebar --}}
+    @yield('content')
 @endauth
 
-<div class="{{ auth()->check() ? 'main-content' : '' }}">
-    @yield('content')
-</div>
-
-{{-- jQuery --}}
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
-{{-- Bootstrap 5 JS --}}
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
 @stack('scripts')
+<script>
+    // Auto-hide flash message setelah 4 detik
+    setTimeout(() => {
+        $('#flash-success, #flash-error').fadeOut(500);
+    }, 4000);
+</script>
 </body>
 </html>

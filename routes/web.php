@@ -7,7 +7,7 @@ use App\Http\Controllers\Admin\DashboardController as AdminDashboard;
 use App\Http\Controllers\Adopter\Dashboard as AdopterDashboard;
 
 //halman publik sebelum login
-Route::get('/', [HomeController::class, 'index']->name ('home');
+Route::get('/', [HomeController::class, 'index'])->name ('home');
 Route::get('/animals', [HomeController::class, 'animals'])->name('animals.index');
 Route::get('/animals/{animal}', [HomeController::class, 'show'])->name('animals.show');
 
@@ -19,7 +19,7 @@ Route::post('/register',[AuthController::class, 'register']);
 Route::post('/logout',  [AuthController::class, 'logout'])->name('logout');
 
 //admin's routes
-Routes::prefix('admin')->name('admin.')->middleware('role:admin')->group(function() {
+Route::prefix('admin')->name('admin.')->middleware('role:admin')->group(function() {
     Route::get('/dashboard', [AdminDashboard::class, 'index'])->name('dashboard');
 
     //spesies

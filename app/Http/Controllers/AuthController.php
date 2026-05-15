@@ -23,12 +23,12 @@ class AuthController extends Controller
     {
         $request->validate([
             'email' => 'required|email',
-            'password' => 'required|min:6',
+            'password' => 'required|min:8',
         ], [
             'email.required' => 'Email wajib diisi',
             'email.email' => 'Format email tidak valid',
             'password.required' => 'Password wajib diisi',
-            'password.min' => 'Password minimal 6 karakter',
+            'password.min' => 'Password minimal 8 karakter',
         ]);
 
         $credentials = $request->only('email', 'password');
@@ -58,7 +58,7 @@ class AuthController extends Controller
         $request->validate([
             'name' => 'required|string|max:50',
             'email' => 'required|email|unique:users,email',
-            'password' => 'required|min:6|confirmed',
+            'password' => 'required|min:8|confirmed',
             'phone' => 'nullable|string|max:15',
             'address' => 'nullable|string|max:100',
         ], [
@@ -68,7 +68,7 @@ class AuthController extends Controller
             'email.unique' => 'Email sudah terdaftar',
             'password.required' => 'Password wajib diisi',
             'password.confirmed' => 'Konfirmasi password tidak cocok',
-            'password.min' => 'Password minimal 6 karakter',
+            'password.min' => 'Password minimal 8 karakter',
         ]);
 
         $user = User::create([
@@ -98,9 +98,10 @@ class AuthController extends Controller
     //helper: redirect sesuai role
     private function redirectByRole()
     {
-        if (Auth::user()->role === 'admin') {
-            return redirect()->route('admin.dashboard');
-        }
-        return redirect()->route('adopter.dashboard');
+    if (Auth::user()->isAdmin()) {
+        return redirect()->route('admin.dashboard');
+    }
+
+    return redirect()->route('adopter.dashboard');
     }
 }

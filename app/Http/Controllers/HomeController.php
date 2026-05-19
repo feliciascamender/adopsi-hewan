@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Animal;
+use App\Models\Species;
+use App\Models\Adoption;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller

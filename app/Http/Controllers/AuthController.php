@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rules\Password;
 
 class AuthController extends Controller
 {
@@ -12,8 +14,8 @@ class AuthController extends Controller
     public function showLogin()
     {
         //kalo udah logi, redirect ke dashboard sesuai role
-        if (Auth::check()) {
-            return $this->redirectByRole();
+        if (auth()->check()) {
+            return $this->redirectBasedRole();
         }
         return view('auth.login');
     }
@@ -21,87 +23,97 @@ class AuthController extends Controller
     //proses login
     public function login(Request $request)
     {
-        $request->validate([
+        $credentials = $request->validate([
             'email' => 'required|email',
             'password' => 'required|min:8',
-        ], [
-            'email.required' => 'Email wajib diisi',
-            'email.email' => 'Format email tidak valid',
-            'password.required' => 'Password wajib diisi',
-            'password.min' => 'Password minimal 8 karakter',
         ]);
-
-        $credentials = $request->only('email', 'password');
 
         if (Auth::attempt($credentials, $request->boolean('remember'))) {
             $request->session()->regenerate();
-            return $this->redirectByRole();
+
+            //log untuk debugginf(opsional)
+            logger()->info('User logged in', [
+                'user_id' => auth()->id(),
+                'role' => auth()->user()->role,
+            ]);
+
+            return $this->redirectBasedOnRole()
+            ->with('success', 'Halo calon babu!' . auth()->user()->name . '（￣︶￣）↗');
         }
 
         return back()
-        ->withInput($request->only('email'))
-        ->withErrors(['email' => 'Email atau password salah']);
+        ->withErrors(['email' => 'Email atau password salah.'])
+            ->onlyInput('email');
     }
 
-    //menampilkan halman register
-    public function showRegister()
-    {
-        if (Auth::check()) {
-            return $this->redirectByRole();
-        }
-        return view('auth.register');
-    }
+ /*
+  * tampilkan halaman registe
+  */
 
-    //proses register (adopter)
+ public function showRegister()
+ {
+     //kalo udah login, redirect sesuai role
+     if (auth()->check()) {
+         return $this->redirectByRole();
+     }
+     return view('auth.register');
+ }
+
+    /*
+    * proses register (selalu jadi adopter)
+    */ 
+
     public function register(Request $request)
     {
-        $request->validate([
-            'name' => 'required|string|max:50',
-            'email' => 'required|email|unique:users,email',
-            'password' => 'required|min:8|confirmed',
-            'phone' => 'nullable|string|max:15',
-            'address' => 'nullable|string|max:100',
-        ], [
-            'name.required' => 'Nama wajib diisi',
-            'email.required' => 'Email wajib diisi',
-            'email.email' => 'Format email tidak valid',
-            'email.unique' => 'Email sudah terdaftar',
-            'password.required' => 'Password wajib diisi',
-            'password.confirmed' => 'Konfirmasi password tidak cocok',
-            'password.min' => 'Password minimal 8 karakter',
+        $validated = $request->validate([
+            'name'     => ['required', 'string', 'max:255'],
+            'email'    => ['required', 'email', 'unique:users,email'],
+            'password' => ['required', 'confirmed', Password::min(8)],
+            'phone'    => ['required', 'string', 'max:12'],
+            'address'  => ['required', 'string', 'max:500'],
         ]);
 
         $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => $request->password,
-            'role' => 'adopter',
-            'phone' => $request->phone,
-            'address' => $request->address,
+            'name'     => $validated['name'],
+            'email'    => $validated['email'],
+            'password' => Hash::make($validated['password']),
+            'role'     => 'adopter', // ALWAYS adopter saat register
+            'phone'    => $validated['phone'] ?? null,
+            'address'  => $validated['address'] ?? null,
         ]);
 
         Auth::login($user);
+
         return redirect()->route('adopter.dashboard')
-        ->with('success', 'Registrasi berhasil. Selamat datang, ' . $user->name . 'ヾ(≧▽≦*)o');
+        ->with('success', 'Selamat datang, calon babu ' . auth()->user()->name . '（￣︶￣）↗');
     }
 
-    //logout
+    /**
+     * logout user
+     */
     public function logout(Request $request)
     {
+        $userName = auth()->user()->name; // Ambil nama sebelum logout
+
         Auth::logout();
+
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-        return redirect()->route('login')
-        ->with('success', 'Anda berhasil logout. Sampai jumpa lagi! (＾▽＾)');
+
+        return redirect()->route('home')
+        ->with('success', 'Selamat tinggal, ' . $userName . '（￣︶￣）↗');
     }
 
-    //helper: redirect sesuai role
-    private function redirectByRole()
+    /**
+     * Helper: redirect berdasarkan role
+     */
+
+    private function redirectBasedOnRole()
     {
-    if (Auth::user()->isAdmin()) {
-        return redirect()->route('admin.dashboard');
-    }
-
-    return redirect()->route('adopter.dashboard');
+        return match (auth()->user()->role) {
+            'adopter' => redirect()->route('adopter.dashboard'),
+            'admin' => redirect()->route('admin.dashboard'),
+            default => redirect()->route('home'),
+        };
     }
 }

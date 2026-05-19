@@ -2,14 +2,20 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\Admin\DashboardController as AdminDashboard;
+use App\Http\Controllers\HomeController;
+
+//controllers admin
+use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
 use App\Http\Controllers\Admin\SpeciesController;
 use App\Http\Controllers\Admin\AnimalController;
 use App\Http\Controllers\Admin\MedicalRecordController;
 use App\Http\Controllers\Admin\AdoptionController as AdminAdoptionController;
+
+//adopter controllers
 use App\Http\Controllers\Adopter\DashboardController as AdopterDashboard;
 use App\Http\Controllers\Adopter\AdoptionController as AdopterAdoptionController;
-use App\Http\Controllers\HomeController;
+use pp\Http\Controllers\Adopter\AnimalController as AdopterAnimalController;
+
 
 //halaman publik sebelum login
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -29,7 +35,7 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::prefix('admin')->name('admin.')->middleware(['auth', 'role:admin'])->group(function () {
 
     // Dashboard
-    Route::get('/dashboard', [AdminDashboard::class, 'index'])->name('dashboard');
+    Route::get('/dashboard', [AdminDashboardController::class, 'index'])->name('dashboard');
 
     // Spesies
     Route::resource('species', SpeciesController::class);
@@ -38,19 +44,27 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'role:admin'])->grou
     Route::resource('animals', AnimalController::class);
 
     // Riwayat Medis
-    Route::get('animals/{animal}/medical-records', [MedicalRecordController::class, 'index'])->name('medical.index');
-    Route::get('animals/{animal}/medical-records/create', [MedicalRecordController::class, 'create'])->name('medical.create');
-    Route::post('animals/{animal}/medical-records', [MedicalRecordController::class, 'store'])->name('medical.store');
-    Route::get('medical-records/{record}/edit', [MedicalRecordController::class, 'edit'])->name('medical.edit');
-    Route::put('medical-records/{record}', [MedicalRecordController::class, 'update'])->name('medical.update');
-    Route::delete('medical-records/{record}', [MedicalRecordController::class, 'destroy'])->name('medical.destroy');
+    Route::prefix('animals/{animal}/medical-records')->name('medical.')->group(function () {
+    Route::get('/', [MedicalRecordController::class, 'index'])->name('index');
+    Route::get('/create', [MedicalRecordController::class, 'create'])->name('create');
+    Route::post('/', [MedicalRecordController::class, 'store'])->name('store');
+    });
+
+    Route::prefix('medical-records/{record}')->name('medical.')->group(function () {
+    Route::get('/edit', [MedicalRecordController::class, 'edit'])->name('edit');
+    Route::put('/', [MedicalRecordController::class, 'update'])->name('update');
+    Route::delete('/', [MedicalRecordController::class, 'destroy'])->name('destroy');
+    });
+
 
     // Pengajuan Adopsi
-    Route::get('adoptions', [AdminAdoptionController::class, 'index'])->name('adoptions.index');
-    Route::get('adoptions/{adoption}', [AdminAdoptionController::class, 'show'])->name('adoptions.show');
-    Route::patch('adoptions/{adoption}/approve', [AdminAdoptionController::class, 'approve'])->name('adoptions.approve');
-    Route::patch('adoptions/{adoption}/reject', [AdminAdoptionController::class, 'reject'])->name('adoptions.reject');
-});
+    Route::prefix('adoptions')->name('adoptions.')->group(function () {
+    Route::get('/', [AdminAdoptionController::class, 'index'])->name('index');
+    Route::get('/{adoption}', [AdminAdoptionController::class, 'show'])->name('show');
+    Route::patch('/{adoption}/approve', [AdminAdoptionController::class, 'approve'])->name('approve');
+    Route::patch('/{adoption}/reject', [AdminAdoptionController::class, 'reject'])->name('reject');
+        });
+    });
 
 //adopter routes
 Route::prefix('adopter')->name('adopter.')->middleware(['auth', 'role:adopter'])->group(function () {
@@ -58,9 +72,14 @@ Route::prefix('adopter')->name('adopter.')->middleware(['auth', 'role:adopter'])
     // Dashboard
     Route::get('/dashboard', [AdopterDashboard::class, 'index'])->name('dashboard');
 
+    // Hewan
+    Route::get('/animals', [AdopterAnimalController::class, 'index'])->name('animals.index');
+    Route::get('/animals/{animal}', [AdopterAnimalController::class, 'show'])->name('animals.show');
+
     // Pengajuan Adopsi
-    Route::get('adoptions', [AdopterAdoptionController::class, 'index'])->name('adoptions.index');
-    Route::get('adoptions/create', [AdopterAdoptionController::class, 'create'])->name('adoptions.create');
-    Route::post('adoptions', [AdopterAdoptionController::class, 'store'])->name('adoptions.store');
-    Route::get('adoptions/{adoption}', [AdopterAdoptionController::class, 'show'])->name('adoptions.show');
-});
+    Route::prefix('adoptions')->name('adoptions.')->group(function () {
+    Route::get('/', [AdopterAdoptionController::class, 'index'])->name('index');
+    Route::get('/create', [AdopterAdoptionController::class, 'create'])->name('create');
+    Route::post('/', [AdopterAdoptionController::class, 'store'])->name('store');
+    });
+    });

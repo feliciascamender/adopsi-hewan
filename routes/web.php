@@ -14,7 +14,7 @@ use App\Http\Controllers\Admin\AdoptionController as AdminAdoptionController;
 //adopter controllers
 use App\Http\Controllers\Adopter\DashboardController as AdopterDashboard;
 use App\Http\Controllers\Adopter\AdoptionController as AdopterAdoptionController;
-use pp\Http\Controllers\Adopter\AnimalController as AdopterAnimalController;
+use App\Http\Controllers\Adopter\AnimalController as AdopterAnimalController;
 
 
 //halaman publik sebelum login

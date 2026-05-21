@@ -15,7 +15,7 @@ class AuthController extends Controller
     {
         //kalo udah logi, redirect ke dashboard sesuai role
         if (auth()->check()) {
-            return $this->redirectBasedRole();
+            return $this->redirectBasedOnRole();
         }
         return view('auth.login');
     }
@@ -54,7 +54,7 @@ class AuthController extends Controller
  {
      //kalo udah login, redirect sesuai role
      if (auth()->check()) {
-         return $this->redirectByRole();
+         return $this->redirectBasedOnRole();
      }
      return view('auth.register');
  }
@@ -69,8 +69,8 @@ class AuthController extends Controller
             'name'     => ['required', 'string', 'max:255'],
             'email'    => ['required', 'email', 'unique:users,email'],
             'password' => ['required', 'confirmed', Password::min(8)],
-            'phone'    => ['required', 'string', 'max:12'],
-            'address'  => ['required', 'string', 'max:500'],
+            'phone'    => ['nullable', 'string', 'max:12'],
+            'address'  => ['nullable', 'string', 'max:500'],
         ]);
 
         $user = User::create([

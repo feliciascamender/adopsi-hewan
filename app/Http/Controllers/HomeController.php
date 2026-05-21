@@ -2,26 +2,37 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Animal;
-use App\Models\Species;
 use App\Models\Adoption;
-use Illuminate\Http\Request;
+use App\Models\Animal;
+use Illuminate\View\View;
 
 class HomeController extends Controller
 {
-    public function index()
+    public function index(): View
     {
-        // Untuk sementara kita tampilkan teks saja dulu agar tahu kalau sudah jalan
-        return view('welcome');
-    }
-    
-    public function animals()
-    {
-        return "Halaman Daftar Hewan";
+        $stats = [
+            'total_animals' => Animal::count(),
+            'available' => Animal::where('status', 'available')->count(),
+            'adopted' => Animal::where('status', 'adopted')->count(),
+            'total_adoptions' => Adoption::where('status', 'approved')->count(),
+        ];
+
+        $latestAnimals = Animal::with('species')
+            ->where('status', 'available')
+            ->latest()
+            ->take(6)
+            ->get();
+
+        return view('home', compact('stats', 'latestAnimals'));
     }
 
-    public function show($id)
+    public function animals(): string
     {
-        return "Detail Hewan ID: " . $id;
+        return 'Halaman Daftar Hewan';
+    }
+
+    public function show(Animal $animal): string
+    {
+        return 'Detail Hewan ID: ' . $animal->id;
     }
 }

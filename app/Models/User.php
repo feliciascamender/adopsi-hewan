@@ -10,25 +10,38 @@ class User extends Authenticatable
     use Notifiable;
 
     protected $fillable = [
-        'name', 'email', 'password', 'role', 'phone', 'address'
+        'name',
+        'email',
+        'password',
+        'role',
+        'phone',
+        'address',
     ];
 
-    protected $hidden = ['password'];
+    protected $hidden = [
+        'password',
+        'remember_token',
+    ];
 
     protected function casts(): array
     {
-        return ['password' => 'hashed'];
+        return [
+            'password' => 'hashed',
+        ];
     }
 
-    // Satu user (adopter) bisa punya banyak pengajuan adopsi
     public function adoptions()
     {
         return $this->hasMany(Adoption::class);
     }
 
-    // Helper: cek apakah user adalah admin
-    public function isAdmin()
+    public function isAdmin(): bool
     {
         return $this->role === 'admin';
+    }
+
+    public function isAdopter(): bool
+    {
+        return $this->role === 'adopter';
     }
 }

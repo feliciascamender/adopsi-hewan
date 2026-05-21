@@ -16,7 +16,6 @@ use App\Http\Controllers\Adopter\DashboardController as AdopterDashboard;
 use App\Http\Controllers\Adopter\AdoptionController as AdopterAdoptionController;
 use App\Http\Controllers\Adopter\AnimalController as AdopterAnimalController;
 
-
 //halaman publik sebelum login
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/animals', [HomeController::class, 'animals'])->name('animals.index');
@@ -55,7 +54,6 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'role:admin'])->grou
     Route::put('/', [MedicalRecordController::class, 'update'])->name('update');
     Route::delete('/', [MedicalRecordController::class, 'destroy'])->name('destroy');
     });
-
 
     // Pengajuan Adopsi
     Route::prefix('adoptions')->name('adoptions.')->group(function () {

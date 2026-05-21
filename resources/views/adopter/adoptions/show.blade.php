@@ -1,0 +1,5 @@
+@extends('layouts.app')
+@section('title', 'Detail Pengajuan — PawHome')
+@section('content')
+<div class="card max-w-3xl"><div class="flex items-start justify-between"><div><h1 class="text-2xl font-bold">{{ $adoption->full_name }}</h1><p class="text-sm text-gray-500 mt-1">{{ $adoption->created_at->format('d M Y') }}</p></div><span class="badge-{{ $adoption->status }}">{{ ucfirst($adoption->status) }}</span></div><div class="mt-5 space-y-4 text-sm"><div><p class="font-semibold text-gray-700">Hewan</p><p class="text-gray-600">{{ $adoption->animals->pluck('name')->join(', ') }}</p></div><div><p class="font-semibold text-gray-700">Alamat KTP</p><p class="text-gray-600">{{ $adoption->ktp_address }}</p></div><div><p class="font-semibold text-gray-700">Alasan</p><p class="text-gray-600">{{ $adoption->reason }}</p></div>@if($adoption->admin_note)<div class="bg-gray-50 border rounded-xl p-4"><p class="font-semibold text-gray-700">Catatan Admin</p><p class="text-gray-600">{{ $adoption->admin_note }}</p></div>@endif</div><a href="{{ route('adopter.adoptions.index') }}" class="btn-secondary mt-6">Kembali</a></div>
+@endsection

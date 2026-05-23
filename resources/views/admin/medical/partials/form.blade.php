@@ -1,3 +1,23 @@
-<div><label class="form-label">Judul</label><input name="title" value="{{ old('title', $record?->title) }}" class="form-input" required>@error('title')<p class="text-xs text-red-500 mt-1">{{ $message }}</p>@enderror</div>
-<div><label class="form-label">Tanggal</label><input type="date" name="record_date" value="{{ old('record_date', $record?->record_date?->format('Y-m-d')) }}" class="form-input" required>@error('record_date')<p class="text-xs text-red-500 mt-1">{{ $message }}</p>@enderror</div>
-<div><label class="form-label">Catatan</label><textarea name="notes" class="form-input" rows="4">{{ old('notes', $record?->notes) }}</textarea>@error('notes')<p class="text-xs text-red-500 mt-1">{{ $message }}</p>@enderror</div>
+<div>
+    <label class="form-label">Judul</label>
+    <input name="title" value="{{ old('title', $record?->title) }}" class="form-input" required>
+    @error('title')
+        <p class="text-xs text-red-500 mt-1">{{ $message }}</p>
+    @enderror
+</div>
+
+<div>
+    <label class="form-label">Tanggal</label>
+    <input type="date" name="record_date" value="{{ old('record_date', $record?->record_date?->format('Y-m-d')) }}" class="form-input" required>
+    @error('record_date')
+        <p class="text-xs text-red-500 mt-1">{{ $message }}</p>
+    @enderror
+</div>
+
+<div>
+    <label class="form-label">Catatan</label>
+    <textarea name="notes" class="form-input" rows="4">{{ old('notes', $record?->notes) }}</textarea>
+    @error('notes')
+        <p class="text-xs text-red-500 mt-1">{{ $message }}</p>
+    @enderror
+</div>

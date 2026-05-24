@@ -3,13 +3,13 @@
 @section('title', 'Daftar — PawHome Banjarmasin')
 
 @section('content')
-<div class="min-h-screen bg-gradient-to-br from-pink-50 via-white to-rose-50 flex items-center justify-center px-4 py-12">
+<div class="min-h-screen bg-gradient-to-br from-orange-50 via-white to-rose-50 flex items-center justify-center px-4 py-12">
     <div class="w-full max-w-md">
 
         {{-- Header --}}
         <div class="text-center mb-8">
             <a href="{{ route('home') }}"
-               class="inline-flex items-center gap-2 text-gray-400 hover:text-pink-600
+               class="inline-flex items-center gap-2 text-gray-400 hover:text-orange-600
                       text-sm transition-colors mb-6">
                 ← Kembali ke Beranda
             </a>
@@ -42,7 +42,7 @@
                 {{-- Nama Lengkap --}}
                 <div class="mb-4">
                     <label for="name" class="block text-sm font-semibold text-gray-700 mb-1.5">
-                        Nama Lengkap <span class="text-pink-500">*</span>
+                        Nama Lengkap <span class="text-orange-500">*</span>
                     </label>
                     <input type="text"
                            id="name"
@@ -52,7 +52,7 @@
                            autocomplete="name"
                            autofocus
                            class="w-full px-4 py-2.5 rounded-xl border text-sm transition-colors
-                                  focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent
+                                  focus:outline-none focus:ring-2 focus:ring-[#F7931A] focus:border-transparent
                                   @error('name') border-red-400 bg-red-50 @else border-gray-200 @enderror">
                     @error('name')
                         <p class="text-red-500 text-xs mt-1.5">⚠️ {{ $message }}</p>
@@ -62,7 +62,7 @@
                 {{-- Email --}}
                 <div class="mb-4">
                     <label for="email" class="block text-sm font-semibold text-gray-700 mb-1.5">
-                        Alamat Email <span class="text-pink-500">*</span>
+                        Alamat Email <span class="text-orange-500">*</span>
                     </label>
                     <input type="email"
                            id="email"
@@ -71,7 +71,7 @@
                            placeholder="contoh@email.com"
                            autocomplete="email"
                            class="w-full px-4 py-2.5 rounded-xl border text-sm transition-colors
-                                  focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent
+                                  focus:outline-none focus:ring-2 focus:ring-[#F7931A] focus:border-transparent
                                   @error('email') border-red-400 bg-red-50 @else border-gray-200 @enderror">
                     @error('email')
                         <p class="text-red-500 text-xs mt-1.5">⚠️ {{ $message }}</p>
@@ -91,7 +91,7 @@
                            placeholder="08xxxxxxxxxx"
                            autocomplete="tel"
                            class="w-full px-4 py-2.5 rounded-xl border border-gray-200 text-sm transition-colors
-                                  focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent">
+                                  focus:outline-none focus:ring-2 focus:ring-[#F7931A] focus:border-transparent">
                     @error('phone')
                         <p class="text-red-500 text-xs mt-1.5">⚠️ {{ $message }}</p>
                     @enderror
@@ -108,7 +108,7 @@
                               rows="2"
                               placeholder="Jl. ..."
                               class="w-full px-4 py-2.5 rounded-xl border border-gray-200 text-sm transition-colors
-                                     focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent
+                                     focus:outline-none focus:ring-2 focus:ring-[#F7931A] focus:border-transparent
                                      resize-none">{{ old('address') }}</textarea>
                     @error('address')
                         <p class="text-red-500 text-xs mt-1.5">⚠️ {{ $message }}</p>
@@ -118,7 +118,7 @@
                 {{-- Password --}}
                 <div class="mb-4">
                     <label for="password" class="block text-sm font-semibold text-gray-700 mb-1.5">
-                        Password <span class="text-pink-500">*</span>
+                        Password <span class="text-orange-500">*</span>
                     </label>
                     <div class="relative">
                         <input type="password"
@@ -127,7 +127,7 @@
                                placeholder="Minimal 8 karakter"
                                autocomplete="new-password"
                                class="w-full px-4 py-2.5 pr-10 rounded-xl border text-sm transition-colors
-                                      focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent
+                                      focus:outline-none focus:ring-2 focus:ring-[#F7931A] focus:border-transparent
                                       @error('password') border-red-400 bg-red-50 @else border-gray-200 @enderror">
                         <button type="button"
                                 id="togglePassword"
@@ -144,7 +144,7 @@
                 {{-- Konfirmasi Password --}}
                 <div class="mb-6">
                     <label for="password_confirmation" class="block text-sm font-semibold text-gray-700 mb-1.5">
-                        Konfirmasi Password <span class="text-pink-500">*</span>
+                        Konfirmasi Password <span class="text-orange-500">*</span>
                     </label>
                     <input type="password"
                            id="password_confirmation"
@@ -152,14 +152,14 @@
                            placeholder="Ulangi password"
                            autocomplete="new-password"
                            class="w-full px-4 py-2.5 rounded-xl border border-gray-200 text-sm transition-colors
-                                  focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent">
+                                  focus:outline-none focus:ring-2 focus:ring-[#F7931A] focus:border-transparent">
                 </div>
 
                 {{-- Submit --}}
                 <button type="submit"
-                        class="w-full bg-pink-600 hover:bg-pink-700 active:bg-pink-800
+                        class="w-full bg-[#E76F2E] hover:bg-[#d95f20] active:bg-[#c7531a]
                                text-white font-semibold py-2.5 rounded-xl text-sm
-                               transition-colors shadow-sm shadow-pink-200">
+                               transition-colors shadow-sm shadow-orange-200">
                     Buat Akun Adopter →
                 </button>
             </form>

@@ -13,7 +13,7 @@
         <div class="card">
             <div class="flex items-center justify-between mb-4">
                 <h2 class="font-bold text-gray-900">Hewan Tersedia</h2>
-                <a href="{{ route('adopter.animals.index') }}" class="text-sm text-pink-600 hover:text-pink-700">Lihat semua</a>
+                <a href="{{ route('adopter.animals.index') }}" class="text-sm text-[#E76F2E] hover:text-[#E76F2E]">Lihat semua</a>
             </div>
             <div class="space-y-3">
                 @forelse($availableAnimals as $animal)
@@ -30,7 +30,7 @@
         <div class="card">
             <div class="flex items-center justify-between mb-4">
                 <h2 class="font-bold text-gray-900">Pengajuan Saya</h2>
-                <a href="{{ route('adopter.adoptions.index') }}" class="text-sm text-pink-600 hover:text-pink-700">Lihat semua</a>
+                <a href="{{ route('adopter.adoptions.index') }}" class="text-sm text-[#E76F2E] hover:text-[#E76F2E]">Lihat semua</a>
             </div>
             <div class="space-y-3">
                 @forelse($myAdoptions as $adoption)

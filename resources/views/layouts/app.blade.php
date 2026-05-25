@@ -39,7 +39,7 @@
                 </div>
 
                 <div>
-                    <p class="text-lg font-extrabold leading-tight text-white">PawBanjar</p>
+                    <p class="text-lg font-extrabold leading-tight text-white">PawHome</p>
                     <p class="text-xs font-semibold text-white/50">Adoption Center</p>
                 </div>
             </a>

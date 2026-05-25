@@ -7,18 +7,41 @@
 {{-- ============================================================
      NAVBAR PUBLIK
      ============================================================ --}}
-<nav class="bg-white/80 backdrop-blur-md border-b border-gray-100 sticky top-0 z-50">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
-        <div class="flex items-center gap-2">
-            <span class="text-2xl">🐾</span>
-            <div>
-                <span class="font-bold text-gray-900 text-base">PawHome</span>
-                <span class="text-orange-500 font-bold text-base"> BJM</span>
+<nav id="navbar" class="bg-white/80 backdrop-blur-md border-b border-gray-100 sticky top-0 z-50">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 h-20 flex items-center justify-between">
+
+        <a href="{{ route('home') }}" class="flex items-center gap-0">
+
+            {{-- Logo emoji — awalnya tersembunyi --}}
+            <div id="logo-icon"
+                class="ml-10"
+                 style="
+                    opacity: 0;
+                    transform: scale(0.5) rotate(-20deg);
+                    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+                    width: 0;
+                    overflow: hidden;
+                 ">
+               <img src="{{ asset('images/logo.png') }}" class="h-16 w-auto" alt="PawHome">
             </div>
-        </div>
+
+            {{-- Nama brand — awalnya tampil --}}
+            <div id="brand-name"
+                 style="
+                    opacity: 1;
+                    max-width: 200px;
+                    transition: all 0.3s ease;
+                    overflow: hidden;
+                    white-space: nowrap;
+                 ">
+                <span class="font-bold text-gray-900 text-2xl">PawHome</span>
+            </div>
+
+        </a>
+
         <div class="flex items-center gap-2 sm:gap-3">
             <a href="{{ route('login') }}"
-               class="text-sm text-gray-600 hover:ttext-[#E76F2E] font-medium px-3 py-1.5 transition-colors">
+               class="text-sm text-gray-600 font-medium px-3 py-1.5 transition-colors hover:text-[#E76F2E]">
                 Masuk
             </a>
             <a href="{{ route('register') }}"
@@ -33,36 +56,69 @@
 {{-- ============================================================
      HERO SECTION
      ============================================================ --}}
-<section class="bg-gradient-to-br from-orange-50 via-white to-rose-50 py-20 sm:py-28">
-    <div class="max-w-5xl mx-auto px-4 sm:px-6 text-center">
-        <span class="inline-block text-5xl mb-6">🐾</span>
-        <h1 class="text-4xl sm:text-5xl font-bold text-gray-900 mb-5 leading-tight">
-            Temukan Sahabat Berbulumu<br>
-            <span class="ttext-[#E76F2E]">di Banjarmasin</span>
-        </h1>
-        <p class="text-gray-500 text-lg mb-10 max-w-lg mx-auto leading-relaxed">
-            PawHome menghubungkan hewan peliharaan yang membutuhkan rumah
-            dengan keluarga yang siap memberikan kasih sayang.
-        </p>
-        <div class="flex flex-wrap items-center justify-center gap-3">
-            <a href="{{ route('register') }}"
-               class="bg-[#E76F2E] hover:bg-[#d95f20] text-white font-semibold
-                      px-7 py-3 rounded-xl transition-colors shadow-md shadow-orange-200 text-sm">
-                Mulai Adopsi Sekarang →
-            </a>
-            <a href="{{ route('login') }}"
-               class="bg-white hover:bg-gray-50 text-gray-700 font-semibold border border-gray-200
-                      px-7 py-3 rounded-xl transition-colors text-sm">
-                Sudah Punya Akun
-            </a>
+<section class="relative overflow-hidden" style="min-height: 550px;">
+
+    {{-- Background image --}}
+    <div class="absolute inset-0">
+        <img src="{{ asset('images/Home.png') }}"
+             alt="Hero Background"
+             class="w-full h-full object-cover object-bottom">
+    </div>
+
+    {{-- Konten teks --}}
+    <div class="relative z-10 max-w-6xl mx-auto px-8 sm:px-12">
+        <div class="flex items-center min-h-[500px]">
+            <div class="w-full md:w-[52%] py-16">
+
+                {{-- Logo --}}
+                <div class="mb-10 flex justify-center -translate-x-10 translate-y-8">
+                    <img src="{{ asset('images/logo.png') }}"
+                         alt="PawHome Logo"
+                         class="h-[155px] w-auto opacity-90">
+                </div>
+
+                <h1 class="text-5xl sm:text-6xl font-extrabold text-white mb-6 leading-tight">
+                    Temukan Sahabat<br>Berbulumu<br>
+                    <span class="text-white">di Banjarmasin</span>
+                </h1>
+
+                <p class="text-white/85 text-base mb-10 max-w-sm leading-relaxed">
+                    PawHome menghubungkan hewan peliharaan yang
+                    membutuhkan rumah dengan keluarga yang
+                    siap memberikan kasih sayang.
+                </p>
+
+                <div class="flex flex-wrap gap-3">
+                    <a href="{{ route('register') }}"
+                       class="bg-white text-[#E76F2E] font-bold px-7 py-3 rounded-xl
+                              transition-all hover:bg-orange-50 shadow-md text-sm">
+                        Mulai Adopsi Sekarang →
+                    </a>
+                    <a href="{{ route('login') }}"
+                       class="bg-transparent border-2 border-white text-white font-bold
+                              px-7 py-3 rounded-xl transition-all hover:bg-white/10 text-sm">
+                        Masuk
+                    </a>
+                </div>
+
+            </div>
         </div>
     </div>
+
+
+
 </section>
 
 {{-- ============================================================
      STATISTIK
      ============================================================ --}}
-<section class="py-14 bg-white">
+<section class="py-14 relative overflow-hidden"
+         style="background-image: url('{{ asset('images/paw.png') }}');
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
+                background-color: white;">
+
     <div class="max-w-5xl mx-auto px-4 sm:px-6">
         <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6">
             <div class="text-center p-6 rounded-2xl bg-orange-50 border border-orange-100">
@@ -83,6 +139,7 @@
             </div>
         </div>
     </div>
+
 </section>
 
 {{-- ============================================================
@@ -244,3 +301,41 @@
 </footer>
 
 @endsection
+
+@push('scripts')
+<script>
+$(window).on('scroll', function () {
+    if ($(this).scrollTop() > 60) {
+
+        // Sembunyikan nama brand
+        $('#brand-name').css({
+            'opacity': '0',
+            'max-width': '0',
+        });
+
+        // Munculkan logo dengan animasi timbul
+        $('#logo-icon').css({
+            'opacity': '1',
+            'transform': 'scale(1) rotate(0deg)',
+            'width': 'auto',
+        });
+
+    } else {
+
+        // Tampilkan nama brand lagi
+        $('#brand-name').css({
+            'opacity': '1',
+            'max-width': '200px',
+        });
+
+        // Sembunyikan logo
+        $('#logo-icon').css({
+            'opacity': '0',
+            'transform': 'scale(0.5) rotate(-20deg)',
+            'width': '0',
+        });
+
+    }
+});
+</script>
+@endpush

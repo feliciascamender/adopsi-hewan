@@ -56,35 +56,56 @@
 {{-- ============================================================
      HERO SECTION
      ============================================================ --}}
-<section class="bg-gradient-to-br from-orange-50 via-white to-rose-50 py-20 sm:py-28">
-    <div class="max-w-5xl mx-auto px-4 sm:px-6 text-center">
-        <span class="inline-block text-5xl mb-6">🐾</span>
-        <h1 class="text-4xl sm:text-5xl font-bold text-gray-900 mb-5 leading-tight">
-            Temukan Sahabat Berbulumu<br>
-            <span class="text-[#E76F2E]">di Banjarmasin</span>
-        </h1>
-        <p class="text-gray-500 text-lg mb-10 max-w-lg mx-auto leading-relaxed">
-            PawHome menghubungkan hewan peliharaan yang membutuhkan rumah
-            dengan keluarga yang siap memberikan kasih sayang.
-        </p>
-        <div class="flex flex-wrap items-center justify-center gap-3">
-            <a href="{{ route('register') }}"
-               class="bg-[#E76F2E] hover:bg-[#d95f20] text-white font-semibold
-                      px-7 py-3 rounded-xl transition-colors shadow-md shadow-orange-200 text-sm">
-                Mulai Adopsi Sekarang →
-            </a>
-            <a href="{{ route('login') }}"
-               class="bg-white hover:bg-gray-50 text-gray-700 font-semibold border border-gray-200
-                      px-7 py-3 rounded-xl transition-colors text-sm">
-                Sudah Punya Akun
-            </a>
+<section class="relative overflow-hidden" style="min-height: 550px;">
+
+    {{-- Background image --}}
+    <div class="absolute inset-0">
+        <img src="{{ asset('images/Home.png') }}"
+             alt="Hero Background"
+             class="w-full h-full object-cover object-bottom">
+    </div>
+
+    {{-- Konten teks --}}
+    <div class="relative z-10 max-w-6xl mx-auto px-8 sm:px-12">
+        <div class="flex items-center min-h-[500px]">
+            <div class="w-full md:w-[52%] py-16">
+
+                {{-- Logo --}}
+                <div class="mb-10 flex justify-center -translate-x-10 translate-y-8">
+                    <img src="{{ asset('images/logo.png') }}"
+                         alt="PawHome Logo"
+                         class="h-[155px] w-auto opacity-90">
+                </div>
+
+                <h1 class="text-5xl sm:text-6xl font-extrabold text-white mb-6 leading-tight">
+                    Temukan Sahabat<br>Berbulumu<br>
+                    <span class="text-white">di Banjarmasin</span>
+                </h1>
+
+                <p class="text-white/85 text-base mb-10 max-w-sm leading-relaxed">
+                    PawHome menghubungkan hewan peliharaan yang
+                    membutuhkan rumah dengan keluarga yang
+                    siap memberikan kasih sayang.
+                </p>
+
+                <div class="flex flex-wrap gap-3">
+                    <a href="{{ route('register') }}"
+                       class="bg-white text-[#E76F2E] font-bold px-7 py-3 rounded-xl
+                              transition-all hover:bg-orange-50 shadow-md text-sm">
+                        Mulai Adopsi Sekarang →
+                    </a>
+                    <a href="{{ route('login') }}"
+                       class="bg-transparent border-2 border-white text-white font-bold
+                              px-7 py-3 rounded-xl transition-all hover:bg-white/10 text-sm">
+                        Masuk
+                    </a>
+                </div>
+
+            </div>
         </div>
     </div>
 
-
-
 </section>
-
 {{-- ============================================================
      STATISTIK
      ============================================================ --}}

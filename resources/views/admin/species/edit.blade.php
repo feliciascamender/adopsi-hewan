@@ -1,6 +1,11 @@
 @extends('layouts.app')
 
 @section('title', 'Edit Spesies — PawHome')
+@section('breadcrumb')
+    <span class="text-gray-400">Admin</span> / 
+    <a href="{{ route('admin.species.index') }}" class="text-gray-400 hover:text-gray-700">Kelola Spesies</a> / 
+    <span class="text-gray-700 font-medium">Edit</span>
+@endsection
 
 @section('content')
 <div class="card max-w-2xl">

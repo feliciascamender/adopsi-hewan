@@ -1,7 +1,9 @@
 @extends('layouts.app')
 
-@section('title', 'Dashboard Admin — PawBanjar')
-@section('breadcrumb', '<span class="text-[#A89991]">Admin</span> / <span class="font-bold text-[#2B2523]">Dashboard</span>')
+@section('title', 'Dashboard Admin — PawHome')
+@section('breadcrumb')
+    <span class="text-[#A89991]">Admin</span> / <span class="font-bold text-[#2B2523]">Dashboard</span>
+@endsection
 
 @section('content')
 <div class="space-y-8">
@@ -10,7 +12,7 @@
             <p class="section-label">Admin Overview</p>
             <h1 class="page-title mt-2">Dashboard Admin</h1>
             <p class="page-subtitle">
-                Ringkasan aktivitas adopsi, data hewan, dan pengajuan terbaru di PawBanjar.
+                Ringkasan aktivitas adopsi, data hewan, dan pengajuan terbaru di PawHome.
             </p>
         </div>
 

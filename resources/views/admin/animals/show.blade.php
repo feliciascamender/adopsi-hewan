@@ -1,5 +1,10 @@
 @extends('layouts.app')
 @section('title', 'Detail Hewan — PawHome')
+@section('breadcrumb')
+    <span class="text-[#A89991]">Admin</span> / 
+    <a href="{{ route('admin.animals.index') }}" class="text-[#A89991] hover:text-[#2B2523]">Kelola Hewan</a> / 
+    <span class="font-bold text-[#2B2523]">Detail</span>
+@endsection
 @section('content')
 <div class="card">
     <div class="flex flex-col md:flex-row gap-6">

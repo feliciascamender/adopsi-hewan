@@ -1,7 +1,9 @@
 @extends('layouts.app')
 
-@section('title', 'Kelola Hewan — PawBanjar')
-@section('breadcrumb', '<span class="text-[#A89991]">Admin</span> / <span class="font-bold text-[#2B2523]">Kelola Hewan</span>')
+@section('title', 'Kelola Hewan — PawHome')
+@section('breadcrumb')
+    <span class="text-[#A89991]">Admin</span> / <span class="font-bold text-[#2B2523]">Kelola Hewan</span>
+@endsection
 
 @section('content')
 <div class="space-y-6">

@@ -2,6 +2,12 @@
 
 @section('title', 'Edit Hewan — PawHome')
 
+@section('breadcrumb')
+    <span class="text-[#A89991]">Admin</span> / 
+    <a href="{{ route('admin.animals.index') }}" class="text-[#A89991] hover:text-[#2B2523]">Kelola Hewan</a> / 
+    <span class="font-bold text-[#2B2523]">Edit</span>
+@endsection
+
 @section('content')
 <div class="card max-w-3xl">
     <h1 class="text-xl font-bold mb-5">Edit Hewan</h1>

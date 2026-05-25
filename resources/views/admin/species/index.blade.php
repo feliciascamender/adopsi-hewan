@@ -1,6 +1,8 @@
 @extends('layouts.app')
 @section('title', 'Kelola Spesies — PawHome')
-@section('breadcrumb', '<span class="text-gray-400">Admin</span> / <span class="text-gray-700 font-medium">Kelola Spesies</span>')
+@section('breadcrumb')
+    <span class="text-gray-400">Admin</span> / <span class="text-gray-700 font-medium">Kelola Spesies</span>
+@endsection
 @section('content')
 <div class="card">
     <div class="flex items-center justify-between mb-5">

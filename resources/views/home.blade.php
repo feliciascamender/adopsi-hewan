@@ -18,7 +18,7 @@
         </div>
         <div class="flex items-center gap-2 sm:gap-3">
             <a href="{{ route('login') }}"
-               class="text-sm text-gray-600 hover:ttext-[#E76F2E] font-medium px-3 py-1.5 transition-colors">
+               class="text-sm text-gray-600 hover:text-[#E76F2E] font-medium px-3 py-1.5 transition-colors">
                 Masuk
             </a>
             <a href="{{ route('register') }}"
@@ -38,7 +38,7 @@
         <span class="inline-block text-5xl mb-6">🐾</span>
         <h1 class="text-4xl sm:text-5xl font-bold text-gray-900 mb-5 leading-tight">
             Temukan Sahabat Berbulumu<br>
-            <span class="ttext-[#E76F2E]">di Banjarmasin</span>
+            <span class="text-[#E76F2E]">di Banjarmasin</span>
         </h1>
         <p class="text-gray-500 text-lg mb-10 max-w-lg mx-auto leading-relaxed">
             PawHome menghubungkan hewan peliharaan yang membutuhkan rumah
@@ -66,7 +66,7 @@
     <div class="max-w-5xl mx-auto px-4 sm:px-6">
         <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6">
             <div class="text-center p-6 rounded-2xl bg-orange-50 border border-orange-100">
-                <p class="text-3xl font-bold ttext-[#E76F2E]">{{ $stats['total_animals'] }}</p>
+                <p class="text-3xl font-bold text-[#E76F2E]">{{ $stats['total_animals'] }}</p>
                 <p class="text-sm text-gray-500 mt-1 font-medium">Total Hewan</p>
             </div>
             <div class="text-center p-6 rounded-2xl bg-green-50 border border-green-100">
@@ -137,7 +137,7 @@
                     </p>
                     <a href="{{ route('login') }}"
                        class="block text-center text-xs font-semibold bg-orange-50 hover:bg-orange-100
-                              ttext-[#E76F2E] py-2 rounded-lg transition-colors">
+                              text-[#E76F2E] py-2 rounded-lg transition-colors">
                         Login untuk Adopsi
                     </a>
                 </div>
@@ -215,7 +215,7 @@
             bagi hewan-hewan yang membutuhkan kasih sayang.
         </p>
         <a href="{{ route('register') }}"
-           class="inline-block bg-white hover:bg-orange-50 ttext-[#E76F2E] font-bold
+           class="inline-block bg-white hover:bg-orange-50 text-[#E76F2E] font-bold
                   px-8 py-3 rounded-xl text-sm transition-colors shadow-md">
             Daftar Sekarang — Gratis!
         </a>

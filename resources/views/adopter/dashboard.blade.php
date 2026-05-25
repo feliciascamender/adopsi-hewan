@@ -1,6 +1,9 @@
 @extends('layouts.app')
 
 @section('title', 'Dashboard Adopter — PawHome Banjarmasin')
+@section('breadcrumb')
+    <span class="text-[#A89991]">Adopter</span> / <span class="font-bold text-[#2B2523]">Dashboard</span>
+@endsection
 
 @section('content')
 <div class="space-y-6">

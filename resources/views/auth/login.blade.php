@@ -1,138 +1,159 @@
 @extends('layouts.app')
-
+ 
 @section('title', 'Masuk — PawHome Banjarmasin')
-
+ 
 @section('content')
-<div class="min-h-screen bg-gradient-to-br from-orange-50 via-white to-rose-50 flex items-center justify-center px-4 py-12">
-    <div class="w-full max-w-md">
-
-        {{-- Back to home --}}
-        <div class="text-center mb-8">
-            <a href="{{ route('home') }}"
-               class="inline-flex items-center gap-2 text-gray-400 hover:bg-[#E76F2E]
-                      text-sm transition-colors mb-6">
-                ← Kembali ke Beranda
+<div class="min-h-screen flex bg-[#E7D4FA]">
+ 
+    {{-- ── KIRI: Form ── --}}
+    <div class="w-full lg:w-1/2 flex items-center justify-center px-8 py-12">
+        <div class="w-full max-w-md bg-brand-primary rounded-3xl shadow-xl shadow-brand-primary/40 px-10 py-9">
+ 
+            {{-- Logo + Brand --}}
+            <a href="{{ route('home') }}" class="group flex items-center gap-3 mb-6 w-fit">
+                <img src="{{ asset('images/logoPurple.png') }}"
+                     alt="PawHome Logo"
+                     class="h-8 w-auto object-contain brightness-0 invert
+                            group-hover:brightness-100 group-hover:invert-0
+                            transition-all duration-300">
+                <span class="font-brand font-extrabold text-xl text-white
+                             group-hover:text-brand-light transition-colors duration-300">PawHome</span>
             </a>
-            <div class="flex flex-col items-center">
-                <span class="text-4xl mb-3">🐾</span>
-                <h1 class="text-2xl font-bold text-gray-900">Masuk ke PawHome</h1>
-                <p class="text-gray-400 text-sm mt-1">Selamat datang kembali!</p>
+ 
+            {{-- Heading --}}
+            <div class="mb-6">
+                <h1 class="font-brand text-2xl font-black text-white leading-tight">
+                    Selamat Datang Kembali! 👋
+                </h1>
+                <p class="text-white/50 text-sm mt-1">
+                    Masuk untuk mulai proses adopsi hewan pilihanmu.
+                </p>
             </div>
-        </div>
-
-        {{-- Card --}}
-        <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-8">
-
-            {{-- Error umum --}}
-            @if ($errors->any() && !$errors->has('email'))
-                <div class="bg-red-50 border border-red-200 text-red-700 text-sm
-                            px-4 py-3 rounded-xl mb-5">
+ 
+            {{-- Error --}}
+            @if ($errors->any())
+                <div class="bg-white/10 border border-white/20 text-white text-sm px-4 py-3 rounded-2xl mb-4">
                     {{ $errors->first() }}
                 </div>
             @endif
-
-            <form method="POST" action="{{ route('login') }}" novalidate>
+ 
+            <form method="POST" action="{{ route('login') }}" novalidate class="space-y-4">
                 @csrf
-
+ 
                 {{-- Email --}}
-                <div class="mb-4">
-                    <label for="email" class="block text-sm font-semibold text-gray-700 mb-1.5">
+                <div>
+                    <label for="email" class="block text-sm font-bold text-white/90 mb-1.5">
                         Alamat Email
                     </label>
                     <input type="email"
-                           id="email"
-                           name="email"
+                           id="email" name="email"
                            value="{{ old('email') }}"
                            placeholder="contoh@email.com"
-                           autocomplete="email"
-                           autofocus
-                           class="w-full px-4 py-2.5 rounded-xl border text-sm transition-colors
-                                  focus:outline-none focus:ring-2 focus:ring-[#F7931A] focus:border-transparent
-                                  @error('email') border-red-400 bg-red-50 @else border-gray-200 @enderror">
+                           autocomplete="email" autofocus
+                           class="w-full px-4 py-3 rounded-2xl border text-sm text-white transition-all
+                                  placeholder-white/30 bg-white/10
+                                  focus:outline-none focus:ring-2 focus:ring-brand-light focus:border-transparent
+                                  @error('email') border-red-400/60 @else border-white/20 @enderror">
                     @error('email')
-                        <p class="text-red-500 text-xs mt-1.5 flex items-center gap-1">
-                            <span>⚠️</span> {{ $message }}
-                        </p>
+                        <p class="text-red-300 text-xs mt-1.5">⚠️ {{ $message }}</p>
                     @enderror
                 </div>
-
-                {{-- Password --}}
-                <div class="mb-5">
-                    <label for="password" class="block text-sm font-semibold text-gray-700 mb-1.5">
+ 
+                {{-- Password + Tombol Masuk sejajar --}}
+                <div>
+                    <label for="password" class="block text-sm font-bold text-white/90 mb-1.5">
                         Password
                     </label>
-                    <div class="relative">
-                        <input type="password"
-                               id="password"
-                               name="password"
-                               placeholder="••••••••"
-                               autocomplete="current-password"
-                               class="w-full px-4 py-2.5 pr-10 rounded-xl border border-gray-200 text-sm transition-colors
-                                      focus:outline-none focus:ring-2 focus:ring-[#F7931A] focus:border-transparent">
-                        {{-- Toggle password visibility --}}
-                        <button type="button"
-                                id="togglePassword"
-                                class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400
-                                       hover:text-gray-600 text-sm transition-colors">
-                            👁️
+                    <div class="flex gap-2">
+                        <div class="relative flex-1">
+                            <input type="password"
+                                   id="password" name="password"
+                                   placeholder="••••••••"
+                                   autocomplete="current-password"
+                                   class="w-full px-4 py-3 pr-10 rounded-2xl border border-white/20 bg-white/10
+                                          text-white placeholder-white/30 text-sm transition-all
+                                          focus:outline-none focus:ring-2 focus:ring-brand-light focus:border-transparent">
+                            <button type="button" id="togglePassword"
+                                    class="absolute right-3 top-1/2 -translate-y-1/2 transition-colors">
+                                <img src="{{ asset('images/passcat1.png') }}"
+                                     alt="Toggle password"
+                                     class="w-9 h-9 object-contain opacity-50 hover:opacity-100 transition-opacity">
+                            </button>
+                        </div>
+                        {{-- Amber supaya pop di atas ungu gelap --}}
+                        <button type="submit"
+                                class="bg-accent-base hover:bg-accent-strong text-surface-dark font-bold px-5 rounded-2xl text-sm
+                                       transition-all duration-200 hover:-translate-y-0.5 shadow-lg shadow-black/20 whitespace-nowrap">
+                            Masuk →
                         </button>
                     </div>
                 </div>
-
-                {{-- Remember me --}}
-                <div class="flex items-center justify-between mb-6">
-                    <label class="flex items-center gap-2 cursor-pointer">
-                        <input type="checkbox"
-                               name="remember"
-                               class="w-4 h-4 rounded border-gray-300 bg-[#E76F2E]
-                                      focus:ring-[#F7931A] cursor-pointer">
-                        <span class="text-sm text-gray-600">Ingat saya</span>
-                    </label>
+ 
+                {{-- Remember --}}
+                <div class="flex items-center gap-2">
+                    <input type="checkbox" name="remember" id="remember"
+                           class="w-4 h-4 rounded-lg border-white/30 accent-accent-base cursor-pointer">
+                    <label for="remember" class="text-sm text-white/60 cursor-pointer">Ingat saya</label>
                 </div>
-
-                {{-- Submit --}}
-                <button type="submit"
-                        class="w-full bg-[#E76F2E] hover:bg-[#d95f20] active:bg-[#c7531a]
-                               text-white font-semibold py-2.5 rounded-xl text-sm
-                               transition-colors shadow-sm shadow-orange-200">
-                    Masuk →
-                </button>
+ 
             </form>
-
+ 
             {{-- Divider --}}
-            <div class="relative my-6">
+            <div class="relative my-5">
                 <div class="absolute inset-0 flex items-center">
-                    <div class="w-full border-t border-gray-100"></div>
+                    <div class="w-full border-t border-white/15"></div>
                 </div>
                 <div class="relative flex justify-center">
-                    <span class="bg-white px-3 text-xs text-gray-400">Belum punya akun?</span>
+                    <span class="bg-brand-primary px-3 text-xs text-white/40">Belum punya akun?</span>
                 </div>
             </div>
-
-            {{-- Register link --}}
+ 
+            {{-- Register --}}
             <a href="{{ route('register') }}"
-               class="block w-full text-center bg-gray-50 hover:bg-gray-100 text-gray-700
-                      font-semibold py-2.5 rounded-xl text-sm transition-colors border border-gray-200">
+               class="block w-full text-center border-2 border-white/30 text-white/70
+                      font-bold py-2.5 rounded-2xl text-sm transition-all duration-200
+                      hover:border-white hover:text-white hover:bg-white/10">
                 Daftar sebagai Adopter
             </a>
+ 
+            <p class="text-center text-xs text-white/30 mt-4">
+                Admin shelter? Gunakan akun admin yang telah diberikan.
+            </p>
+ 
         </div>
-
-        {{-- Admin note --}}
-        <p class="text-center text-xs text-gray-400 mt-6">
-            Admin shelter? Gunakan akun admin yang telah diberikan.
-        </p>
     </div>
+ 
+    {{-- ── KANAN: Visual ── --}}
+    <div class="hidden lg:block w-1/2 relative overflow-hidden">
+ 
+        <img src="{{ asset('images/CatLogin.png') }}"
+             alt="Hewan PawHome"
+             class="absolute inset-0 w-full h-full object-contain object-center py-16">
+ 
+        {{-- Say meow bubble --}}
+        <div class="absolute top-10 right-20 z-20">
+            <div class="bg-brand-primary text-white font-bold px-5 py-3 rounded-full shadow-xl
+                        animate-bounce" style="animation-duration: 2s;">
+                Say meow! 🐱
+            </div>
+        </div>
+ 
+    </div>
+ 
 </div>
 @endsection
-
+ 
 @push('scripts')
 <script>
-    // Toggle password visibility
     $('#togglePassword').on('click', function () {
         const input = $('#password');
         const isPassword = input.attr('type') === 'password';
         input.attr('type', isPassword ? 'text' : 'password');
-        $(this).text(isPassword ? '🙈' : '👁️');
+        $(this).find('img').attr('src', isPassword
+            ? '{{ asset("images/passcat2.png") }}'
+            : '{{ asset("images/passcat1.png") }}'
+        );
     });
 </script>
 @endpush
+ 

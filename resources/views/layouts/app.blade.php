@@ -38,7 +38,7 @@
         <a href="{{ auth()->user()->role === 'admin' ? route('admin.dashboard') : route('adopter.dashboard') }}"
            class="flex items-center gap-3">
             <div class="flex h-12 w-12 items-center justify-center rounded-2xl overflow-hidden">
-                <img src="{{ asset('images/logo.png') }}"
+                <img src="{{ asset('images/Logopurple.png') }}"
                     alt="PawHome Logo"
                     class="h-full w-full object-contain">
             </div>

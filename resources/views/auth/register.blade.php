@@ -3,16 +3,26 @@
 @section('title', 'Daftar — PawHome Banjarmasin')
  
 @section('content')
-<div class="min-h-screen flex items-center justify-center bg-[#E7D4FA] px-4 py-16">
+<div class="min-h-screen flex items-center justify-center px-4 py-16 relative" style="background-color: #E7D4FA;">
+    
+ {{-- Logo pattern background --}}
+<div class="absolute inset-0 z-0 pointer-events-none"
+     style="background-image: url('/images/pawbgungu.png'); 
+            background-repeat: repeat; 
+            background-size:270px; 
+            background-position: 50px 50px;
+            opacity: 0.03;">
+</div>
  
-    {{-- Wrapper: pt-[110px] bikin ruang di atas card untuk gambar nongol --}}
-    <div class="w-full max-w-md relative pt-[110px]">
+    {{-- Wrapper --}}
+    <div class="w-full max-w-lg relative pt-[110px] z-10">
  
         {{-- ── Gambar hewan ── --}}
-        <div class="absolute -top-[70px] left-1/2 -translate-x-1/2 w-[110%] z-20 pointer-events-none animate-animals">
+        <div class="absolute -top-[96px] left-1/2 -translate-x-1/2 w-[110%] z-20 pointer-events-none animate-animals">
             <img src="{{ asset('images/register.png') }}"
                  alt="Hewan PawHome"
-                 class="w-full object-contain object-bottom opacity-95">
+                 class="w-full object-contain object-bottom opacity-95"
+                 style="filter: drop-shadow(0 8px 16px rgba(63,13,97,0.2));">
         </div>
  
         {{-- ── Card utama ── --}}
@@ -32,7 +42,7 @@
             {{-- Heading --}}
             <div class="mb-6">
                 <h1 class="font-brand text-2xl font-black text-white leading-tight">
-                    Daftar ke PawHome 🐾
+                    Ayo Bergabung! 🐾
                 </h1>
                 <p class="text-white/50 text-sm mt-1">
                     Buat akun adopter gratis dan temukan sahabatmu.
@@ -149,6 +159,22 @@
                                  class="w-9 h-9 object-contain opacity-50 hover:opacity-100 transition-opacity">
                         </button>
                     </div>
+ 
+                    {{-- Password strength indicator --}}
+                    <div class="mt-2 space-y-1.5" id="strength-wrapper" style="display:none;">
+                        <div class="flex gap-1">
+                            <div class="h-1 flex-1 rounded-full bg-white/10 transition-all duration-300" id="bar1"></div>
+                            <div class="h-1 flex-1 rounded-full bg-white/10 transition-all duration-300" id="bar2"></div>
+                            <div class="h-1 flex-1 rounded-full bg-white/10 transition-all duration-300" id="bar3"></div>
+                            <div class="h-1 flex-1 rounded-full bg-white/10 transition-all duration-300" id="bar4"></div>
+                            <div class="h-1 flex-1 rounded-full bg-white/10 transition-all duration-300" id="bar5"></div>
+                        </div>
+                        <div class="flex items-center justify-between gap-2">
+                            <p class="text-xs font-medium" id="strength-label"></p>
+                            <p class="text-xs text-white/40 italic" id="strength-hint"></p>
+                        </div>
+                    </div>
+ 
                     @error('password')
                         <p class="text-red-300 text-xs mt-1.5">⚠️ {{ $message }}</p>
                     @enderror
@@ -159,13 +185,21 @@
                     <label for="password_confirmation" class="block text-sm font-bold text-white/90 mb-1.5">
                         Konfirmasi Password <span class="text-accent-base">*</span>
                     </label>
-                    <input type="password"
-                           id="password_confirmation" name="password_confirmation"
-                           placeholder="Ulangi password"
-                           autocomplete="new-password"
-                           class="w-full px-4 py-3 rounded-2xl border border-white/20 bg-white/10
-                                  text-white placeholder-white/30 text-sm transition-all
-                                  focus:outline-none focus:ring-2 focus:ring-brand-light focus:border-transparent">
+                    <div class="relative">
+                        <input type="password"
+                               id="password_confirmation" name="password_confirmation"
+                               placeholder="Ulangi password"
+                               autocomplete="new-password"
+                               class="w-full px-4 py-3 pr-12 rounded-2xl border border-white/20 bg-white/10
+                                      text-white placeholder-white/30 text-sm transition-all
+                                      focus:outline-none focus:ring-2 focus:ring-brand-light focus:border-transparent">
+                        <button type="button" id="toggleConfirm"
+                                class="absolute right-3 top-1/2 -translate-y-1/2 transition-colors">
+                            <img src="{{ asset('images/passcat1.png') }}"
+                                 alt="Toggle confirm password"
+                                 class="w-9 h-9 object-contain opacity-50 hover:opacity-100 transition-opacity">
+                        </button>
+                    </div>
                 </div>
  
                 {{-- Submit --}}
@@ -207,6 +241,7 @@
 </div>
  
 <style>
+ 
     @keyframes animalsSlideUp {
         0%   { opacity: 0; transform: translateX(-50%) translateY(40px); }
         100% { opacity: 1; transform: translateX(-50%) translateY(0); }
@@ -221,6 +256,7 @@
  
 @push('scripts')
 <script>
+    {{-- Toggle password --}}
     $('#togglePassword').on('click', function () {
         const input = $('#password');
         const isPassword = input.attr('type') === 'password';
@@ -231,6 +267,60 @@
         );
     });
  
+    {{-- Toggle confirm password --}}
+    $('#toggleConfirm').on('click', function () {
+        const input = $('#password_confirmation');
+        const isPassword = input.attr('type') === 'password';
+        input.attr('type', isPassword ? 'text' : 'password');
+        $(this).find('img').attr('src', isPassword
+            ? '{{ asset("images/passcat2.png") }}'
+            : '{{ asset("images/passcat1.png") }}'
+        );
+    });
+ 
+    {{-- Password strength --}}
+    $('#password').on('input', function () {
+        const val = $(this).val();
+        const wrapper = $('#strength-wrapper');
+ 
+        if (val.length === 0) {
+            wrapper.hide();
+            return;
+        }
+        wrapper.show();
+ 
+        let score = 0;
+        if (val.length >= 6)  score++;
+        if (val.length >= 10) score++;
+        if (/[A-Z]/.test(val) && /[a-z]/.test(val)) score++;
+        if (/[0-9]/.test(val)) score++;
+        if (/[^A-Za-z0-9]/.test(val)) score++;
+ 
+        const colors = ['#ef4444', '#f97316', '#eab308', '#84cc16', '#22c55e'];
+        const labels = ['Sangat lemah', 'Lemah', 'Sedang', 'Kuat', 'Sangat kuat'];
+        const hints  = [
+            'Tambahkan lebih banyak karakter',
+            'Coba tambahkan huruf besar & kecil',
+            'Tambahkan angka biar lebih kuat',
+            'Tambahkan simbol (!@#$) untuk maksimal',
+            'Password kamu sudah sangat aman! ✓'
+        ];
+        const textColors = ['text-red-400', 'text-orange-400', 'text-yellow-400', 'text-lime-400', 'text-green-400'];
+ 
+        for (let i = 1; i <= 5; i++) {
+            const bar = $('#bar' + i);
+            bar.css('background-color', i <= score ? colors[score - 1] : 'rgba(255,255,255,0.1)');
+        }
+ 
+        const label = $('#strength-label');
+        label.text(labels[score - 1] || '');
+        label.attr('class', 'text-xs font-medium ' + (textColors[score - 1] || ''));
+ 
+        const hint = $('#strength-hint');
+        hint.text(hints[score - 1] || '');
+    });
+ 
+    {{-- Confirm password match --}}
     $('#password_confirmation').on('input', function () {
         const pass    = $('#password').val();
         const confirm = $(this).val();
@@ -246,3 +336,4 @@
     });
 </script>
 @endpush
+ 

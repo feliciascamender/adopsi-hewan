@@ -4,20 +4,55 @@ export default {
     "./resources/**/*.blade.php",
     "./resources/**/*.js",
   ],
+
+    safelist: [
+    // Brand variants baru
+    'bg-brand-lavender', 'text-brand-lavender', 'border-brand-lavender',
+    'bg-brand-mauve',    'text-brand-mauve',    'border-brand-mauve',
+    'bg-brand-violet',   'text-brand-violet',   'border-brand-violet',
+    'bg-brand-grape',    'text-brand-grape',    'border-brand-grape',
+    'bg-brand-plum',     'text-brand-plum',     'border-brand-plum',
+    'bg-brand-deep',     'text-brand-deep',     'border-brand-deep',
+    // Brand yang udah ada (jaga-jaga)
+    'bg-brand-soft',     'text-brand-soft',
+    'bg-brand-light',    'text-brand-light',
+    'bg-brand-secondary','text-brand-secondary',
+    'bg-brand-primary',  'text-brand-primary',
+    // Accent
+    'bg-accent-soft',    'text-accent-soft',
+    'bg-accent-base',    'text-accent-base',
+    'bg-accent-strong',  'text-accent-strong',
+    // Surface
+    'bg-surface-alt',    'text-surface-muted',  'text-surface-dark',
+    'border-surface-border',
+    // Status
+    'bg-status-available-bg',   'text-status-available-text',
+    'bg-status-pending-bg',     'text-status-pending-text',
+    'bg-status-rejected-bg',    'text-status-rejected-text',
+    'bg-status-adopted-bg',     'text-status-adopted-text',
+  ],
+  
   theme: {
     extend: {
 
       // ── FONT ─────────────────────────────────────
-      fontFamily: {
-        sans: ['Poppins', 'sans-serif'],
-      },
-
+      
+        fontFamily: {
+        sans: ['Figtree', 'sans-serif'],    // default semua teks
+        brand: ['Inter', 'sans-serif'],     // khusus brand & heading
+        },
       colors: {
 
         // ── PRIMARY (Ungu) ───────────────────────────
         brand: {
           soft:      '#f5eeff',  // bg-brand-soft      → card bg, hover ringan
+          lavender:  '#E5C2FD',  // bg-brand-light 3
+          mauve:     '#906EA7',  // bg-brand-light 2
           light:     '#c084f5',  // bg-brand-light     → hover btn, gradient
+          violet:    '#A474CF',  // bg-brand-secondary 5
+          grape:     '#6F4E86',  // bg-brand-secondary 4
+          plum:      '#563C73',  // bg-brand-secondary 3
+          deep:      '#54346b',  // bg-brand-secondary 2
           secondary: '#7c2fa8',  // bg-brand-secondary → btn secondary
           primary:   '#3f0d61',  // bg-brand-primary   → navbar, btn utama
         },

@@ -4,10 +4,19 @@
  
 @section('content')
 <div class="min-h-screen flex bg-[#E7D4FA]">
+
+ {{-- Logo pattern background --}}
+<div class="absolute inset-0 z-0 pointer-events-none"
+     style="background-image: url('/images/pawbgungu.png'); 
+            background-repeat: repeat; 
+            background-size:270px; 
+            background-position: 50px 50px;
+            opacity: 0.02;">
+</div>
  
     {{-- ── KIRI: Form ── --}}
-    <div class="w-full lg:w-1/2 flex items-center justify-center px-8 py-12">
-        <div class="w-full max-w-md bg-brand-primary rounded-3xl shadow-xl shadow-brand-primary/40 px-10 py-9">
+    <div class="w-full lg:w-1/2 flex items-center justify-center pl-8 pr-2 py-12">
+        <div class="w-full max-w-[535px] bg-brand-primary rounded-3xl shadow-xl shadow-brand-primary/40 px-10 py-9">
  
             {{-- Logo + Brand --}}
             <a href="{{ route('home') }}" class="group flex items-center gap-3 mb-6 w-fit">
@@ -128,10 +137,10 @@
  
         <img src="{{ asset('images/CatLogin.png') }}"
              alt="Hewan PawHome"
-             class="absolute inset-0 w-full h-full object-contain object-center py-16">
+             class="absolute inset-0 w-full h-full object-contain object-center py-16 scale-110">
  
         {{-- Say meow bubble --}}
-        <div class="absolute top-10 right-20 z-20">
+        <div class="absolute top-8 right-20 z-20">
             <div class="bg-brand-primary text-white font-bold px-5 py-3 rounded-full shadow-xl
                         animate-bounce" style="animation-duration: 2s;">
                 Say meow! 🐱

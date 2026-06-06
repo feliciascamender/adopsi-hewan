@@ -45,7 +45,7 @@
             class="nav-link font-semibold text-gray-900 transition-colors pb-1 border-b-2 border-accent-base">
                 Beranda
             </a>
-            <a href="#hewan" data-section="hewan"
+            <a href="#hewan-terbaru" data-section="hewan-terbaru"
             class="nav-link font-medium text-gray-500 hover:text-brand-primary transition-colors pb-1 border-b-2 border-transparent">
                 Hewan
             </a>
@@ -82,7 +82,7 @@
 {{-- ============================================================
      HERO SECTION
      ============================================================ --}}
-<section id="beranda" class="relative overflow-hidden" style="background: linear-gradient(90deg, #e7c4ff 0%, #2c0c42 100%); min-height: 550px;">
+<section id="beranda" class="relative overflow-hidden" style="background: linear-gradient(90deg,  #2c0c42 0%, #e7c4ff 700%); min-height: 550px;">
  {{-- Lengkungan di bawah --}}
 <div class="absolute bottom-0 left-0 right-0 z-20">
     <svg
@@ -132,7 +132,7 @@
         <img src="{{ asset('images/logoPurple.png') }}"
      alt="PawHome Logo"
      class="h-[170px] w-auto opacity-[0.97] -translate-x-[-130px] -translate-y-[50px]"
-     style="filter: drop-shadow(0 0 1px white) drop-shadow(0 0 1px white) drop-shadow(0 0 15px rgba(255,255,255,0.6));">
+    style="filter: drop-shadow(0 0 8px rgba(200,160,255,0.15));">
     </div>
 
     {{-- Heading --}}
@@ -200,121 +200,181 @@
    
 
 {{-- ============================================================
-     STATISTIK
+     STATISTIK 
      ============================================================ --}}
-<section class="pt-20 pb-20 relative overflow-hidden bg-white">
-
-{{-- Decorative paw print — center-right background --}}
-<div class="absolute inset-0 pointer-events-none select-none z-0 flex items-center justify-end pr-[8%]">
-    <img src="{{ asset('images/paw.png') }}"
-         alt=""
-         aria-hidden="true"
-         class="w-[420px] h-auto object-contain opacity-[1]"
-         style="transform: rotate(15deg);">
-</div>
+<section id="statistik" class="pt-20 pb-24 relative overflow-hidden bg-white">
  
-    <div class="relative max-w-6xl mx-auto px-4 sm:px-6">
-
-    
-
-     {{-- Kaki kucing (depan wave) --}}
- <div class="absolute -bottom-[-270px] -right-[189px] z-40 pointer-events-none">
-        <img src="{{ asset('images/PawCatHome.png') }}"
-             style="transform: rotate(-2deg);"
-             class="h-[700px] w-auto object-contain object-bottom "
-             alt="Kucing">
-    </div> 
- 
-        {{-- Wrapper card pembungkus --}}
-        <div class="bg-white/15 backdrop-blur-sm border border-white/20 rounded-[28px] p-5 sm:p-6 shadow-xl shadow-brand-primary/20">
- 
-            <div class="grid grid-cols-2 xl:grid-cols-4 gap-4 sm:gap-5">
- 
-                {{-- Card 1: Total Hewan (soft purple) --}}
-                <div class="group relative rounded-[22px] bg-brand-soft p-6 sm:p-7 overflow-hidden min-h-[190px] flex flex-col justify-between hover:-translate-y-1 transition-all duration-300 hover:shadow-xl hover:shadow-brand-primary/15">
-                    <div class="absolute right-[-40px] bottom-[-40px] w-[200px] h-[200px] rounded-full bg-brand-light opacity-[0.25] group-hover:opacity-[0.35] transition-opacity"></div>
-                    <div class="absolute right-[-10px] bottom-[-10px] w-[130px] h-[130px] rounded-full bg-brand-secondary opacity-[0.12] group-hover:opacity-[0.18] transition-opacity"></div>
- 
-                    <div class="flex items-center gap-2 relative z-10">
-                        <div class="w-9 h-9 rounded-[10px] bg-brand-primary/10 flex items-center justify-center text-base">🐾</div>
-                        <span class="text-sm font-bold text-brand-secondary">Total Hewan</span>
-                    </div>
- 
-                    <div class="relative z-10">
-                        <p class="font-brand text-[52px] font-black text-brand-primary leading-none">{{ $stats['total_animals'] }}</p>
-                        <span class="inline-block mt-2 text-[11px] font-bold px-3 py-1.5 rounded-full bg-brand-primary/10 text-brand-primary">🐱 Semua spesies</span>
-                    </div>
- 
-                    <div class="absolute right-2 bottom-0 text-[72px] z-20 drop-shadow-lg opacity-70 group-hover:opacity-90 group-hover:scale-110 transition-all duration-300 origin-bottom-right">🐾</div>
-                </div>
- 
-                {{-- Card 2: Siap Diadopsi (dark purple — hero) --}}
-                <div class="group relative rounded-[22px] bg-brand-primary p-6 sm:p-7 overflow-hidden min-h-[190px] flex flex-col justify-between hover:-translate-y-1 transition-all duration-300 hover:shadow-xl hover:shadow-brand-primary/40">
-                    <div class="absolute right-[-40px] bottom-[-40px] w-[200px] h-[200px] rounded-full bg-brand-light opacity-[0.15] group-hover:opacity-[0.22] transition-opacity"></div>
-                    <div class="absolute right-[-10px] bottom-[-10px] w-[130px] h-[130px] rounded-full bg-white opacity-[0.07] group-hover:opacity-[0.12] transition-opacity"></div>
- 
-                    <div class="flex items-center gap-2 relative z-10">
-                        <div class="w-9 h-9 rounded-[10px] bg-white/15 flex items-center justify-center text-base">🏠</div>
-                        <span class="text-sm font-bold text-white/70">Siap Diadopsi</span>
-                    </div>
- 
-                    <div class="relative z-10">
-                        <p class="font-brand text-[52px] font-black text-white leading-none">{{ $stats['available'] }}</p>
-                        <span class="inline-block mt-2 text-[11px] font-bold px-3 py-1.5 rounded-full bg-white/15 text-white">✨ Tersedia sekarang</span>
-                    </div>
- 
-                    <div class="absolute right-2 bottom-0 text-[72px] z-20 drop-shadow-lg opacity-60 group-hover:opacity-85 group-hover:scale-110 transition-all duration-300 origin-bottom-right">🏠</div>
-                </div>
- 
-                {{-- Card 3: Sudah Diadopsi (indigo/blue) --}}
-                <div class="group relative rounded-[22px] bg-status-adopted-bg p-6 sm:p-7 overflow-hidden min-h-[190px] flex flex-col justify-between hover:-translate-y-1 transition-all duration-300 hover:shadow-xl hover:shadow-status-adopted-text/20">
-                    <div class="absolute right-[-40px] bottom-[-40px] w-[200px] h-[200px] rounded-full bg-status-adopted-text opacity-[0.2] group-hover:opacity-[0.28] transition-opacity"></div>
-                    <div class="absolute right-[-10px] bottom-[-10px] w-[130px] h-[130px] rounded-full bg-status-adopted-text opacity-[0.1] group-hover:opacity-[0.15] transition-opacity"></div>
- 
-                    <div class="flex items-center gap-2 relative z-10">
-                        <div class="w-9 h-9 rounded-[10px] bg-status-adopted-text/15 flex items-center justify-center text-base">💜</div>
-                        <span class="text-sm font-bold text-status-adopted-text">Sudah Diadopsi</span>
-                    </div>
- 
-                    <div class="relative z-10">
-                        <p class="font-brand text-[52px] font-black text-status-adopted-text leading-none">{{ $stats['adopted'] }}</p>
-                        <span class="inline-block mt-2 text-[11px] font-bold px-3 py-1.5 rounded-full bg-status-adopted-text/15 text-status-adopted-text">💜 Telah berpindah</span>
-                    </div>
- 
-                    <div class="absolute right-2 bottom-0 text-[72px] z-20 drop-shadow-lg opacity-70 group-hover:opacity-90 group-hover:scale-110 transition-all duration-300 origin-bottom-right">🐶</div>
-                </div>
- 
-                {{-- Card 4: Adopsi Berhasil (amber) --}}
-                <div class="group relative rounded-[22px] bg-accent-soft p-6 sm:p-7 overflow-hidden min-h-[190px] flex flex-col justify-between hover:-translate-y-1 transition-all duration-300 hover:shadow-xl hover:shadow-accent-base/25">
-                    <div class="absolute right-[-40px] bottom-[-40px] w-[200px] h-[200px] rounded-full bg-accent-base opacity-[0.3] group-hover:opacity-[0.4] transition-opacity"></div>
-                    <div class="absolute right-[-10px] bottom-[-10px] w-[130px] h-[130px] rounded-full bg-accent-strong opacity-[0.15] group-hover:opacity-[0.2] transition-opacity"></div>
- 
-                    <div class="flex items-center gap-2 relative z-10">
-                        <div class="w-9 h-9 rounded-[10px] bg-accent-base/25 flex items-center justify-center text-base">🎉</div>
-                        <span class="text-sm font-bold text-accent-strong">Adopsi Berhasil</span>
-                    </div>
- 
-                    <div class="relative z-10">
-                        <p class="font-brand text-[52px] font-black text-accent-strong leading-none">{{ $stats['total_adoptions'] }}</p>
-                        <span class="inline-block mt-2 text-[11px] font-bold px-3 py-1.5 rounded-full bg-accent-base/25 text-accent-strong">🎀 Disetujui admin</span>
-                    </div>
- 
-                    <div class="absolute right-2 bottom-0 text-[72px] z-20 drop-shadow-lg opacity-70 group-hover:opacity-90 group-hover:scale-110 transition-all duration-300 origin-bottom-right">🎀</div>
-                </div>
- 
-            </div>
-        </div>
+    {{-- Decorative paw --}}
+    <div class="absolute inset-0 pointer-events-none select-none z-70 flex items-center justify-end pr-[8%]">
+        <img src="{{ asset('images/paw.png') }}"
+             alt="" aria-hidden="true"
+             class="w-[650px] h-auto object-contain opacity-[0.35]"
+             style="transform: rotate(15deg);">
     </div>
  
+    <div class="relative max-w-6xl mx-auto px-4 sm:px-6">
+ 
+        {{-- Cat image --}}
+        <div class="absolute -bottom-[-527px] -right-[189px] z-40 pointer-events-none">
+            <img src="{{ asset('images/PawCatHome.png') }}"
+                 style="transform: rotate(-2deg);"
+                 class="h-[700px] w-auto object-contain object-bottom"
+                 alt="Kucing">
+        </div>
+ 
+      {{-- Section Header --}}
+<div class="mb-10">
+    <span class="inline-flex items-center gap-2 bg-brand-soft text-brand-secondary text-xs font-bold tracking-widest uppercase px-4 py-1.5 rounded-full mb-4">
+        <span class="w-1.5 h-1.5 rounded-full bg-accent-base inline-block"></span>
+        Statistik PawHome
+    </span>
+    <h2 class="font-brand text-3xl font-black text-surface-dark leading-snug">
+        Ada yang sudah punya rumah.<br>
+        Sisanya, <span class="relative inline-block text-accent-base">
+            menunggumu.
+            <svg class="absolute -bottom-1 left-0 w-full" viewBox="0 0 200 8" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0 6 Q50 0 100 5 Q150 10 200 4" stroke="#fbbf24" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+            </svg>
+        </span>
+    </h2>
+</div>
+
+        
+    {{-- Wrapper card pembungkus --}}
+    <div class="bg-white/15 backdrop-blur-sm border border-white/20 rounded-[28px] p-5 sm:p-6 shadow-xl shadow-brand-primary/20">
+
+        {{-- Strip 4 card sejajar --}}
+        <div class="rounded-[24px] overflow-hidden flex flex-col sm:flex-row shadow-2xl shadow-brand-primary/10">
+
+            {{-- ① Siap Diadopsi --}}
+            <div class="stat-item group relative flex-1 bg-brand-primary p-7 sm:p-8
+                    flex flex-col justify-between gap-5
+                    min-h-[220px] sm:min-h-[280px]
+                    border-b sm:border-b-0 sm:border-r border-white/10
+                    overflow-hidden
+                    transition-all duration-300
+                    hover:[box-shadow:0_20px_40px_rgba(63,13,97,0.35),inset_0_0_0_1.5px_rgba(192,132,245,0.4)]">
+
+                <div class="absolute inset-0 bg-white opacity-0 group-hover:opacity-[0.06] transition-opacity duration-300 z-0"></div>
+                <div class="absolute right-[-50px] bottom-[-50px] w-[200px] h-[200px] rounded-full bg-brand-light/10 group-hover:scale-125 transition-transform duration-500"></div>
+                <div class="absolute right-0 bottom-0 w-[110px] h-[110px] rounded-full bg-white/[0.04]"></div>
+                <div class="flex items-center gap-2.5 relative z-10">
+                    <span class="text-[20px] font-black tracking-[0.3em] text-white/25 uppercase">✨</span>
+                    <span class="w-px h-3 bg-white/20"></span>
+                    <span class="text-xs font-bold text-white/50 transition-all duration-300 group-hover:text-white group-hover:text-lg">Siap Diadopsi</span>
+                </div>
+                <div class="relative z-10">
+                    <p class="font-brand font-black text-white leading-none count-up
+                              group-hover:scale-[1.04] transition-transform duration-300 inline-block origin-left"
+                       data-target="{{ $stats['available'] }}"
+                       style="font-size: clamp(54px, 6vw, 86px);">0</p>
+                    <p class=" text-white/40 text-[16px] mt-2.5 font-extrabold tracking-wide">✨ Tersedia sekarang</p>
+                </div>
+                 <div class="absolute -right-9 -bottom-8 z-20 select-none
+                        opacity-[0.1] group-hover:opacity-[0.9] group-hover:scale-110
+                        transition-all duration-300 origin-bottom-right">
+                <img src="{{ asset('images/Statistika1.png') }}" class="w-[200px] h-[200px] object-contain">
+                </div> 
+            </div>
+
+            {{-- ② Total Hewan --}}
+            <div class="stat-item group relative flex-1 bg-brand-soft p-7 sm:p-8
+                    flex flex-col justify-between gap-5
+                    min-h-[220px] sm:min-h-[280px]
+                    border-b sm:border-b-0 sm:border-r border-brand-primary/10
+                    overflow-hidden
+                    transition-all duration-300
+                    hover:[box-shadow:0_20px_40px_rgba(124,47,168,0.1),inset_0_0_0_1.5px_rgba(124,47,168,0.25)]">
+                <div class="absolute inset-0 bg-white opacity-0 group-hover:opacity-[0.08] transition-opacity duration-300 z-0"></div>
+                <div class="absolute right-[-50px] bottom-[-50px] w-[200px] h-[200px] rounded-full bg-brand-primary/[0.07] group-hover:scale-125 transition-transform duration-500"></div>
+                <div class="flex items-center gap-2.5 relative z-10">
+                    <span class="text-[20px] font-black tracking-[0.3em] text-brand-primary/25 uppercase">🐱</span>
+                    <span class="w-px h-3 bg-brand-primary/15"></span>
+                    <span class="text-xs font-bold text-brand-secondary/50 transition-all duration-300 group-hover:text-brand-secondary group-hover:text-lg">Total Hewan</span>
+                </div>
+                <div class="relative z-10">
+                    <p class="font-brand font-black text-brand-primary leading-none count-up
+                              group-hover:scale-[1.04] transition-transform duration-300 inline-block origin-left"
+                       data-target="{{ $stats['total_animals'] }}"
+                       style="font-size: clamp(54px, 6vw, 86px);">0</p>
+                    <p class="text-brand-primary/35 text-[16px] mt-2.5 font-semibold tracking-wide">🐱 Semua spesies</p>
+                </div>
+                <div class="absolute -right-7 -bottom-7 z-20 select-none
+                opacity-[0.1] group-hover:opacity-[0.9] group-hover:scale-110
+                transition-all duration-300 origin-bottom-right">
+                <img src="{{ asset('images/statistika2.png') }}" class="w-[180px] h-[180px] object-contain">
+                 </div> 
+        </div>
+
+            {{-- ③ Sudah Diadopsi --}}
+            <div class="stat-item group relative flex-1 bg-status-adopted-bg p-7 sm:p-8
+                    flex flex-col justify-between gap-5
+                    min-h-[220px] sm:min-h-[280px]
+                    border-b sm:border-b-0 sm:border-r border-status-adopted-text/10
+                    overflow-hidden
+                    transition-all duration-300
+                    hover:[box-shadow:0_20px_40px_rgba(79,70,229,0.12),inset_0_0_0_1.5px_rgba(79,70,229,0.3)]">
+                <div class="absolute inset-0 bg-white opacity-0 group-hover:opacity-[0.08] transition-opacity duration-300 z-0"></div>
+                <div class="absolute right-[-50px] bottom-[-50px] w-[200px] h-[200px] rounded-full bg-status-adopted-text/[0.1] group-hover:scale-125 transition-transform duration-500"></div>
+                <div class="flex items-center gap-2.5 relative z-10">
+                    <span class="text-[20px] font-black tracking-[0.3em] text-status-adopted-text/25 uppercase">💜</span>
+                    <span class="w-px h-3 bg-status-adopted-text/15"></span>
+                    <span class="text-xs font-bold text-status-adopted-text/50 transition-all duration-300 group-hover:text-status-adopted group-hover:text-lg">Sudah Diadopsi</span>
+                </div>
+                <div class="relative z-10">
+                    <p class="font-brand font-black text-status-adopted-text leading-none count-up
+                              group-hover:scale-[1.04] transition-transform duration-300 inline-block origin-left"
+                       data-target="{{ $stats['adopted'] }}"
+                       style="font-size: clamp(54px, 6vw, 86px);">0</p>
+                    <p class="text-status-adopted-text/35 text-[16px] mt-2.5 font-semibold tracking-wide">💜 Telah berpindah</p>
+                </div>
+               <div class="absolute -right-9 -bottom-12 z-20 select-none
+            opacity-[0.1] group-hover:opacity-[0.9] group-hover:scale-110
+            transition-all duration-300 origin-bottom-right">
+            <img src="{{ asset('images/statistika4.png') }}" class="w-[200px] h-[200px] object-contain"> </div> 
+        </div>
+
+            {{-- ④ Adopsi Berhasil --}}
+            <div class="stat-item group relative flex-1 bg-accent-soft p-7 sm:p-8
+                    flex flex-col justify-between gap-5
+                    min-h-[220px] sm:min-h-[280px]
+                    overflow-hidden
+                    transition-all duration-300
+                    hover:[box-shadow:0_20px_40px_rgba(251,191,36,0.15),inset_0_0_0_1.5px_rgba(251,191,36,0.45)]">
+                <div class="absolute inset-0 bg-white opacity-0 group-hover:opacity-[0.08] transition-opacity duration-300 z-0"></div>
+                <div class="absolute right-[-50px] bottom-[-50px] w-[200px] h-[200px] rounded-full bg-accent-base/[0.25] group-hover:scale-125 transition-transform duration-500"></div>
+                <div class="flex items-center gap-2.5 relative z-10">
+                    <span class="text-[20px] font-black tracking-[0.3em] text-accent-strong/25 uppercase">🎀</span>
+                    <span class="w-px h-3 bg-accent-strong/15"></span>
+                    <span class="text-xs font-bold text-accent-strong/50 transition-all duration-300 group-hover:text-accent-strong group-hover:text-lg">Adopsi Berhasil</span>
+                </div>
+                <div class="relative z-10">
+                    <p class="font-brand font-black text-accent-strong leading-none count-up
+                              group-hover:scale-[1.04] transition-transform duration-300 inline-block origin-left"
+                       data-target="{{ $stats['total_adoptions'] }}"
+                       style="font-size: clamp(54px, 6vw, 86px);">0</p>
+                    <p class="text-accent-strong/35 text-[16px] mt-2.5 font-semibold tracking-wide">🎀 Disetujui admin</p>
+                </div>
+               <div class="absolute -right-3 -bottom-7 z-20 select-none
+            opacity-[0.1] group-hover:opacity-[0.9] group-hover:scale-110
+            transition-all duration-300 origin-bottom-right">
+            <img src="{{ asset('images/statistika3.png') }}" class="w-[170px] h-[170px] object-contain"> </div> 
+        </div>
+
+        </div>
+    </div>
+  </div>
 </section>
 {{-- ============================================================
      HEWAN TERBARU
      ============================================================ --}}
-<section id="hewan" class="py-14 bg-surface-white">
-    <div class="w-full max-w-[96%] mx-auto px-2 sm:px-4">
 
-        {{-- Header --}}
+<section id="hewan-terbaru" class="py-16 bg-white font-sans">
+    <div class="w-full max-w-[94%] mx-auto px-2 sm:px-4">
+
+    {{-- Header --}}
 <div class="relative mb-8">
+
 
     {{-- Judul Tengah --}}
     <div class="text-center">
@@ -324,50 +384,63 @@
             </svg>
             Siap diadopsi
         </div>
-
-        <h2 class="text-2xl font-bold text-surface-dark">
-            Hewan Tersedia
-        </h2>
-
-        <p class="text-surface-muted text-sm mt-1">
-            Mereka menunggu keluarga yang hangat 💕
-        </p>
     </div>
 
-    {{-- Tombol kanan --}}
-    @if(count($latestAnimals) > 0)
-    <a href="{{ route('login') }}"
-       class="hidden sm:inline-flex items-center gap-1.5 text-sm font-semibold text-brand-secondary hover:text-brand-primary transition-colors absolute right-0 top-1/2 -translate-y-1/2">
-        Lihat semua
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+
+        {{-- Header --}}
+        <div class="text-center mt-8 ">
+            <div>
+                <h2 class="font-brand font-black text-surface-dark leading-[1.05] tracking-[-0.02em]"
+    style="font-size: clamp(2.2rem, 4vw, 3.4rem);">
+    Temukan <span class="relative inline-block text-brand-primary">
+        <span id="typeword">Kucingmu.</span>
+        <svg class="absolute -bottom-1 left-0 w-full" viewBox="0 0 200 8" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0 6 Q50 0 100 5 Q150 10 200 4" stroke="#3f0d61" stroke-width="2.5" fill="none" stroke-linecap="round"/>
         </svg>
-    </a>
-    @endif
+    </span>
+</h2>
+                 <p class="text-surface-muted text-lg mt-4 mb-12">  Mereka menunggu keluarga yang hangat 💕</p>
+            </div>
+            @if(count($latestAnimals) > 0)
+            <div class="hidden sm:flex flex-col items-end gap-1.5 pb-1">
+                <a href="{{ route('login') }}"
+                   class="inline-flex items-center gap-1.5 text-[17px] font-semibold text-brand-secondary
+                          transition-all duration-200 hover:gap-2.5 hover:text-brand-primary">
+                    Lihat semua hewan
+                    <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+                    </svg>
+                </a>
+                <span class="text-[13px] text-gray-400">{{ count($latestAnimals) }} hewan tersedia</span>
+            </div>
+            @endif
+        </div>
 
-</div>
+        @if(count($latestAnimals) > 0)
+        @php
+            $featured  = $latestAnimals[0];
+            $secondary = $latestAnimals->skip(1)->take(4);
+            $secCount  = $secondary->count();
+        @endphp
 
-        {{-- Grid kartu --}}
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-            @forelse($latestAnimals as $animal)
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-4 items-stretch">
 
-            <a href="{{ route('login') }}"
-               class="group bg-surface-white rounded-2xl border border-surface-border overflow-hidden
-                      hover:border-brand-light hover:shadow-lg hover:shadow-brand-primary/10
-                      hover:-translate-y-1 transition-all duration-300 block">
+            {{-- FEATURED --}}
+            <div class="md:col-span-5">
+                <a href="{{ route('login') }}"
+                   class="group relative rounded-[20px] overflow-hidden bg-surface-dark cursor-pointer block no-underline">
 
-                {{-- Foto --}}
-                <div class="h-56 bg-brand-soft overflow-hidden relative">
-                    @if($animal->photo)
-                        <img src="{{ asset('storage/' . $animal->photo) }}"
-                             alt="{{ $animal->name }}"
-                             class="w-full h-full object-cover
-                                    transition-transform duration-500 ease-out
-                                    group-hover:scale-110">
+                    @if($featured->photo)
+                        <div class="w-full min-h-[420px] relative overflow-hidden">
+                            <img src="{{ asset('storage/' . $featured->photo) }}"
+                                 alt="{{ $featured->name }}"
+                                 class="w-full h-full object-cover block transition-transform duration-700 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] group-hover:scale-[1.07]">
+                        </div>
                     @else
-                        <div class="w-full h-full flex items-center justify-center text-5xl
-                                    transition-transform duration-500 ease-out group-hover:scale-110">
-                            @switch($animal->species->name)
+                        <div class="w-full min-h-[420px] flex items-center justify-center text-[96px]
+                                    transition-transform duration-700 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] group-hover:scale-[1.07]"
+                             style="background: linear-gradient(135deg, #3f0d61 0%, #7c2fa8 60%, #A474CF 100%);">
+                            @switch($featured->species->name)
                                 @case('Kucing') 🐱 @break
                                 @case('Anjing') 🐶 @break
                                 @case('Kelinci') 🐰 @break
@@ -377,69 +450,250 @@
                         </div>
                     @endif
 
-                    {{-- Badge spesies --}}
-                    <span class="absolute top-3 left-3 bg-white/90 backdrop-blur-sm
-                                 text-surface-dark text-xs font-semibold px-2.5 py-1 rounded-full
-                                 border border-surface-border/50 shadow-sm">
-                        {{ $animal->species->name }}
+                    {{-- Badges --}}
+                    <span class="absolute top-[18px] left-[18px] z-10
+                                 bg-brand-deep/15 backdrop-blur-[10px] border border-white/25
+                                 text-white text-[16px] font-semibold px-3 py-1.5 rounded-full tracking-[0.03em]">
+                        {{ $featured->species->name }}
+                    </span>
+                    <span class="absolute top-[18px] right-[18px] z-10
+                                 bg-accent-base text-surface-dark text-[13.5px] font-bold px-3 py-1.5 rounded-full tracking-[0.02em]">
+                        {{ $featured->age_months }} bulan
                     </span>
 
-                    {{-- Badge gender --}}
-                    <span class="absolute top-3 right-3 text-xs font-semibold px-2.5 py-1 rounded-full shadow-sm
-                        {{ $animal->gender === 'Jantan'
-                            ? 'bg-status-adopted-bg text-status-adopted-text'
-                            : 'bg-status-rejected-bg text-status-rejected-text' }}">
-                        {{ $animal->gender }}
-                    </span>
+                    {{-- Overlay --}}
+                    <div class="absolute inset-0 pointer-events-none"
+                         style="background: linear-gradient(to top, rgba(10,4,30,0.88) 0%, rgba(10,4,30,0.3) 50%, transparent 100%);"></div>
 
-                    {{-- Overlay hover --}}
-                    <div class="absolute inset-0 bg-brand-primary/0 group-hover:bg-brand-primary/10
-                                transition-colors duration-500 pointer-events-none"></div>
-                </div>
-
-                {{-- Info --}}
-                <div class="p-4">
-                    <div class="flex items-center justify-between mb-1">
-                        <h3 class="font-bold text-surface-dark text-base group-hover:text-brand-secondary transition-colors duration-200">
-                            {{ $animal->name }}
-                        </h3>
-                        <span class="text-xs text-surface-muted bg-surface-alt px-2 py-0.5 rounded-full">
-                            {{ $animal->age_months }} bln
+                    {{-- Info --}}
+                    <div class="absolute bottom-0 left-0 right-0 p-7">
+                        <p class="text-[10px] font-bold tracking-[0.15em] uppercase text-accent-base mb-1.5">✦ Featured</p>
+                        <p class="font-brand font-black text-white leading-[1.1] mb-1.5
+                                  transition-[letter-spacing] duration-300 group-hover:tracking-[0.01em]"
+                           style="font-size: clamp(1.8rem, 3vw, 2.6rem);">
+                            {{ $featured->name }}
+                        </p>
+                        <p class="text-[15px] text-white/70 leading-[1.6] mb-[18px]
+                                  line-clamp-2">
+                            {{ $featured->description }}
+                        </p>
+                        <span class="inline-flex items-center gap-2 bg-accent-base text-surface-dark
+                                     text-[12.5px] font-bold px-5 py-2.5 rounded-full tracking-[0.01em]
+                                     transition-all duration-200 group-hover:bg-accent-strong group-hover:translate-x-[5px]">
+                            Login untuk adopsi
+                            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"
+                                 class="transition-transform duration-200 group-hover:translate-x-[2px]">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+                            </svg>
                         </span>
                     </div>
-                    <p class="text-xs text-surface-muted mb-4 leading-relaxed">
-                        {{ Str::limit($animal->description, 65) }}
-                    </p>
+                </a>
+            </div>
 
-                    {{-- CTA --}}
-                    <div class="flex items-center justify-center gap-1.5 text-xs font-semibold
-                                bg-brand-soft group-hover:bg-brand-primary
-                                text-brand-secondary group-hover:text-white
-                                py-2 rounded-xl transition-all duration-200">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-                        </svg>
-                        Login untuk Adopsi
+            {{-- SECONDARY CARDS --}}
+            <div class="md:col-span-7 flex flex-col">
+
+                @if($secCount === 1)
+                <div class="flex-1">
+                    @php $a = $secondary->first(); @endphp
+                    <a href="{{ route('login') }}"
+                       class="group relative rounded-[18px] overflow-hidden flex flex-col no-underline bg-white
+                              border-[1.5px] border-surface-border h-full
+                              transition-all duration-[250ms] hover:border-[#C4A8E8] hover:shadow-[0_6px_24px_rgba(63,13,97,0.12)] hover:-translate-y-[10px]">
+                        <div class="relative h-[320px] overflow-hidden flex-shrink-0 bg-brand-soft">
+                            @if($a->photo)
+                                <img src="{{ asset('storage/' . $a->photo) }}" alt="{{ $a->name }}"
+                                     class="w-full h-full object-cover block transition-transform duration-[600ms] ease-[cubic-bezier(0.25,0.46,0.45,0.94)] group-hover:scale-[1.08]">
+                            @else
+                                <div class="w-full h-full flex items-center justify-center text-5xl
+                                            transition-transform duration-[600ms] ease-[cubic-bezier(0.25,0.46,0.45,0.94)] group-hover:scale-[1.12]">
+                                    @switch($a->species->name)
+                                        @case('Kucing') 🐱 @break @case('Anjing') 🐶 @break
+                                        @case('Kelinci') 🐰 @break @case('Hamster') 🐹 @break @default 🐾
+                                    @endswitch
+                                </div>
+                            @endif
+                            <div class="absolute inset-0 pointer-events-none"
+                                 style="background: linear-gradient(to bottom, rgba(10,4,30,0.3) 0%, transparent 55%);"></div>
+                            <div class="absolute top-2.5 left-2.5 right-2.5 flex justify-between z-[3]">
+                                <span class="bg-brand-deep/20 backdrop-blur-[10px] border border-white/25 text-white text-[10px] font-semibold px-2.5 py-1 rounded-full tracking-[0.04em]">{{ $a->species->name }}</span>
+                                <span class="{{ $a->gender==='Jantan' ? 'bg-blue-500/30 border border-blue-400/40 text-blue-200' : 'bg-pink-500/25 border border-pink-400/40 text-pink-200' }} backdrop-blur-[10px] text-[10px] font-semibold px-2.5 py-1 rounded-full">{{ $a->gender }}</span>
+                            </div>
+                        </div>
+                        <div class="p-4 flex flex-col flex-1 gap-1.5">
+                            <p class="font-brand font-bold text-[17px] text-surface-dark truncate m-0 transition-colors duration-200 group-hover:text-brand-primary">{{ $a->name }}</p>
+                            <p class="text-[11.5px] text-surface-muted leading-[1.55] flex-1 line-clamp-2 m-0">{{ Str::limit($a->description, 120) }}</p>
+                            <div class="flex items-center gap-1.5 flex-wrap mt-auto">
+                                <span class="text-[10px] font-semibold px-2.5 py-0.5 rounded-full tracking-[0.02em] bg-[#EDE8F7] text-[#4A2299]">{{ $a->species->name }}</span>
+                                <span class="text-[10px] font-semibold px-2.5 py-0.5 rounded-full tracking-[0.02em] bg-accent-soft text-[#8B5A00]">{{ $a->age_months }} bln</span>
+                                <span class="text-[10px] font-semibold px-2.5 py-0.5 rounded-full tracking-[0.02em] {{ $a->gender==='Jantan' ? 'bg-[#E0EEF9] text-[#1A5F99]' : 'bg-[#FCE8F0] text-[#991A50]' }}">{{ $a->gender }}</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                @elseif($secCount === 2)
+                <div class="flex-1 flex flex-col gap-4">
+                    @foreach($secondary as $a)
+                    <div class="flex-1">
+                        <a href="{{ route('login') }}"
+                           class="group relative rounded-[18px] overflow-hidden flex flex-col no-underline bg-white
+                                  border-[1.5px] border-surface-border h-full
+                                  transition-all duration-[250ms] hover:border-[#C4A8E8] hover:shadow-[0_6px_24px_rgba(63,13,97,0.12)] hover:-translate-y-[3px]">
+                            <div class="relative h-[200px] overflow-hidden flex-shrink-0 bg-brand-soft">
+                                @if($a->photo)
+                                    <img src="{{ asset('storage/' . $a->photo) }}" alt="{{ $a->name }}"
+                                         class="w-full h-full object-cover block transition-transform duration-[600ms] group-hover:scale-[1.08]">
+                                @else
+                                    <div class="w-full h-full flex items-center justify-center text-5xl transition-transform duration-[600ms] group-hover:scale-[1.12]">
+                                        @switch($a->species->name) @case('Kucing')🐱@break @case('Anjing')🐶@break @case('Kelinci')🐰@break @case('Hamster')🐹@break @default 🐾 @endswitch
+                                    </div>
+                                @endif
+                                <div class="absolute inset-0 pointer-events-none" style="background: linear-gradient(to bottom, rgba(10,4,30,0.3) 0%, transparent 55%);"></div>
+                                <div class="absolute top-2.5 left-2.5 right-2.5 flex justify-between z-[3]">
+                                    <span class="bg-white/20 backdrop-blur-[10px] border border-white/25 text-white text-[10px] font-semibold px-2.5 py-1 rounded-full">{{ $a->species->name }}</span>
+                                    <span class="{{ $a->gender==='Jantan' ? 'bg-blue-500/30 border border-blue-400/40 text-blue-200' : 'bg-pink-500/25 border border-pink-400/40 text-pink-200' }} backdrop-blur-[10px] text-[10px] font-semibold px-2.5 py-1 rounded-full">{{ $a->gender }}</span>
+                                </div>
+                            </div>
+                            <div class="p-4 flex flex-col flex-1 gap-1.5">
+                                <p class="font-brand font-bold text-[17px] text-surface-dark truncate m-0 transition-colors duration-200 group-hover:text-brand-primary">{{ $a->name }}</p>
+                                <p class="text-[11.5px] text-surface-muted leading-[1.55] flex-1 line-clamp-2 m-0">{{ Str::limit($a->description, 100) }}</p>
+                                <div class="flex items-center gap-1.5 flex-wrap mt-auto">
+                                    <span class="text-[10px] font-semibold px-2.5 py-0.5 rounded-full bg-[#EDE8F7] text-[#4A2299]">{{ $a->species->name }}</span>
+                                    <span class="text-[10px] font-semibold px-2.5 py-0.5 rounded-full bg-accent-soft text-[#8B5A00]">{{ $a->age_months }} bln</span>
+                                    <span class="text-[10px] font-semibold px-2.5 py-0.5 rounded-full {{ $a->gender==='Jantan' ? 'bg-[#E0EEF9] text-[#1A5F99]' : 'bg-[#FCE8F0] text-[#991A50]' }}">{{ $a->gender }}</span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    @endforeach
+                </div>
+
+                @elseif($secCount === 3)
+                @php $sv = $secondary->values(); @endphp
+                <div class="flex-1 flex flex-col gap-4">
+                    <div class="flex-1">
+                        <a href="{{ route('login') }}"
+                           class="group relative rounded-[18px] overflow-hidden flex flex-row no-underline bg-white
+                                  border-[1.5px] border-surface-border h-full
+                                  transition-all duration-[250ms] hover:border-[#C4A8E8] hover:shadow-[0_6px_24px_rgba(63,13,97,0.12)] hover:-translate-y-[3px]">
+                            <div class="relative w-[220px] flex-shrink-0 overflow-hidden bg-brand-soft">
+                                @if($sv[0]->photo)
+                                    <img src="{{ asset('storage/' . $sv[0]->photo) }}" alt="{{ $sv[0]->name }}"
+                                         class="w-full h-full object-cover block transition-transform duration-[600ms] group-hover:scale-[1.08]">
+                                @else
+                                    <div class="w-full h-full flex items-center justify-center text-5xl transition-transform duration-[600ms] group-hover:scale-[1.12]">
+                                        @switch($sv[0]->species->name) @case('Kucing')🐱@break @case('Anjing')🐶@break @case('Kelinci')🐰@break @case('Hamster')🐹@break @default 🐾 @endswitch
+                                    </div>
+                                @endif
+                                <div class="absolute inset-0 pointer-events-none" style="background: linear-gradient(to bottom, rgba(10,4,30,0.3) 0%, transparent 55%);"></div>
+                                <div class="absolute top-2.5 left-2.5 right-2.5 flex justify-between z-[3]">
+                                    <span class="bg-white/20 backdrop-blur-[10px] border border-white/25 text-white text-[10px] font-semibold px-2.5 py-1 rounded-full">{{ $sv[0]->species->name }}</span>
+                                    <span class="{{ $sv[0]->gender==='Jantan' ? 'bg-blue-500/30 border border-blue-400/40 text-blue-200' : 'bg-pink-500/25 border border-pink-400/40 text-pink-200' }} backdrop-blur-[10px] text-[10px] font-semibold px-2.5 py-1 rounded-full">{{ $sv[0]->gender }}</span>
+                                </div>
+                            </div>
+                            <div class="p-[18px_20px] flex flex-col flex-1 gap-1.5">
+                                <p class="font-brand font-bold text-[17px] text-surface-dark truncate m-0 transition-colors duration-200 group-hover:text-brand-primary">{{ $sv[0]->name }}</p>
+                                <p class="text-[11.5px] text-surface-muted leading-[1.55] flex-1 [-webkit-line-clamp:4] line-clamp-4 m-0">{{ $sv[0]->description }}</p>
+                                <div class="flex items-center gap-1.5 flex-wrap mt-auto">
+                                    <span class="text-[10px] font-semibold px-2.5 py-0.5 rounded-full bg-[#EDE8F7] text-[#4A2299]">{{ $sv[0]->species->name }}</span>
+                                    <span class="text-[10px] font-semibold px-2.5 py-0.5 rounded-full bg-accent-soft text-[#8B5A00]">{{ $sv[0]->age_months }} bln</span>
+                                    <span class="text-[10px] font-semibold px-2.5 py-0.5 rounded-full {{ $sv[0]->gender==='Jantan' ? 'bg-[#E0EEF9] text-[#1A5F99]' : 'bg-[#FCE8F0] text-[#991A50]' }}">{{ $sv[0]->gender }}</span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="flex-1 grid grid-cols-2 gap-4">
+                        @foreach([$sv[1], $sv[2]] as $a)
+                        <a href="{{ route('login') }}"
+                           class="group relative rounded-[18px] overflow-hidden flex flex-col no-underline bg-white
+                                  border-[1.5px] border-surface-border h-full
+                                  transition-all duration-[250ms] hover:border-[#C4A8E8] hover:shadow-[0_6px_24px_rgba(63,13,97,0.12)] hover:-translate-y-[3px]">
+                            <div class="relative h-[150px] overflow-hidden flex-shrink-0 bg-brand-soft">
+                                @if($a->photo)
+                                    <img src="{{ asset('storage/' . $a->photo) }}" alt="{{ $a->name }}"
+                                         class="w-full h-full object-cover block transition-transform duration-[600ms] group-hover:scale-[1.08]">
+                                @else
+                                    <div class="w-full h-full flex items-center justify-center text-[38px] transition-transform duration-[600ms] group-hover:scale-[1.12]">
+                                        @switch($a->species->name) @case('Kucing')🐱@break @case('Anjing')🐶@break @case('Kelinci')🐰@break @case('Hamster')🐹@break @default 🐾 @endswitch
+                                    </div>
+                                @endif
+                                <div class="absolute inset-0 pointer-events-none" style="background: linear-gradient(to bottom, rgba(10,4,30,0.3) 0%, transparent 55%);"></div>
+                                <div class="absolute top-2.5 left-2.5 right-2.5 flex justify-between z-[3]">
+                                    <span class="bg-white/20 backdrop-blur-[10px] border border-white/25 text-white text-[10px] font-semibold px-2.5 py-1 rounded-full">{{ $a->species->name }}</span>
+                                    <span class="{{ $a->gender==='Jantan' ? 'bg-blue-500/30 border border-blue-400/40 text-blue-200' : 'bg-pink-500/25 border border-pink-400/40 text-pink-200' }} backdrop-blur-[10px] text-[10px] font-semibold px-2.5 py-1 rounded-full">{{ $a->gender }}</span>
+                                </div>
+                            </div>
+                            <div class="p-4 flex flex-col flex-1 gap-1.5">
+                                <p class="font-brand font-bold text-[17px] text-surface-dark truncate m-0 transition-colors duration-200 group-hover:text-brand-primary">{{ $a->name }}</p>
+                                <p class="text-[11.5px] text-surface-muted leading-[1.55] flex-1 line-clamp-2 m-0">{{ Str::limit($a->description, 70) }}</p>
+                                <div class="flex items-center gap-1.5 flex-wrap mt-auto">
+                                    <span class="text-[10px] font-semibold px-2.5 py-0.5 rounded-full bg-[#EDE8F7] text-[#4A2299]">{{ $a->species->name }}</span>
+                                    <span class="text-[10px] font-semibold px-2.5 py-0.5 rounded-full bg-accent-soft text-[#8B5A00]">{{ $a->age_months }} bln</span>
+                                </div>
+                            </div>
+                        </a>
+                        @endforeach
                     </div>
                 </div>
-            </a>
 
-            @empty
-            <div class="col-span-full text-center py-16">
-                <p class="text-5xl mb-4">🐾</p>
-                <p class="text-surface-muted text-sm">Belum ada hewan tersedia saat ini.</p>
+                @else
+                {{-- 4 kartu: 2x2 grid --}}
+                <div class="flex-1 grid grid-cols-2 grid-rows-2 gap-4">
+                    @foreach($secondary as $a)
+                    <a href="{{ route('login') }}"
+                       class="group relative rounded-[18px] overflow-hidden flex flex-col no-underline bg-white
+                              border-[1.5px] border-surface-border h-full
+                              transition-all duration-[250ms] hover:border-[#C4A8E8] hover:shadow-[0_6px_24px_rgba(63,13,97,0.12)] hover:-translate-y-[3px]">
+                        <div class="relative h-[160px] overflow-hidden flex-shrink-0 bg-brand-soft">
+                            @if($a->photo)
+                                <img src="{{ asset('storage/' . $a->photo) }}" alt="{{ $a->name }}"
+                                     class="w-full h-full object-cover block transition-transform duration-[600ms] group-hover:scale-[1.08]">
+                            @else
+                                <div class="w-full h-full flex items-center justify-center text-[38px] transition-transform duration-[600ms] group-hover:scale-[1.12]">
+                                    @switch($a->species->name) @case('Kucing')🐱@break @case('Anjing')🐶@break @case('Kelinci')🐰@break @case('Hamster')🐹@break @default 🐾 @endswitch
+                                </div>
+                            @endif
+                            <div class="absolute inset-0 pointer-events-none" style="background: linear-gradient(to bottom, rgba(10,4,30,0.3) 0%, transparent 55%);"></div>
+                            <div class="absolute top-2.5 left-2.5 right-2.5 flex justify-between z-[3]">
+                                <span class="bg-white/20 backdrop-blur-[10px] border border-white/25 text-white text-[10px] font-semibold px-2.5 py-1 rounded-full">{{ $a->species->name }}</span>
+                                <span class="{{ $a->gender==='Jantan' ? 'bg-blue-500/30 border border-blue-400/40 text-blue-200' : 'bg-pink-500/25 border border-pink-400/40 text-pink-200' }} backdrop-blur-[10px] text-[10px] font-semibold px-2.5 py-1 rounded-full">{{ $a->gender }}</span>
+                            </div>
+                        </div>
+                        <div class="p-4 flex flex-col flex-1 gap-1.5">
+                            <p class="font-brand font-bold text-[17px] text-surface-dark truncate m-0 transition-colors duration-200 group-hover:text-brand-primary">{{ $a->name }}</p>
+                            <p class="text-[11.5px] text-surface-muted leading-[1.55] flex-1 line-clamp-2 m-0">{{ Str::limit($a->description, 70) }}</p>
+                            <div class="flex items-center gap-1.5 flex-wrap mt-auto">
+                                <span class="text-[10px] font-semibold px-2.5 py-0.5 rounded-full bg-[#EDE8F7] text-[#4A2299]">{{ $a->species->name }}</span>
+                                <span class="text-[10px] font-semibold px-2.5 py-0.5 rounded-full bg-accent-soft text-[#8B5A00]">{{ $a->age_months }} bln</span>
+                                <span class="text-[10px] font-semibold px-2.5 py-0.5 rounded-full {{ $a->gender==='Jantan' ? 'bg-[#E0EEF9] text-[#1A5F99]' : 'bg-[#FCE8F0] text-[#991A50]' }}">{{ $a->gender }}</span>
+                            </div>
+                        </div>
+                    </a>
+                    @endforeach
+                </div>
+                @endif
+
             </div>
-            @endforelse
         </div>
 
-        {{-- Tombol lihat semua (mobile) --}}
-        @if(count($latestAnimals) > 0)
+        {{-- View all mobile --}}
         <div class="text-center mt-10 sm:hidden">
             <a href="{{ route('login') }}"
-               class="inline-flex items-center gap-2 bg-brand-primary hover:bg-brand-secondary
-                      text-white font-semibold px-6 py-2.5 rounded-xl text-sm transition-colors">
-                Lihat Semua Hewan →
+               class="inline-flex items-center gap-2 bg-brand-primary text-white
+                      text-[13.5px] font-semibold px-7 py-3 rounded-full no-underline
+                      transition-all duration-200 hover:bg-brand-secondary hover:-translate-y-[1px]">
+                Lihat Semua Hewan
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+                </svg>
             </a>
+        </div>
+
+        @else
+        <div class="text-center py-20">
+            <p class="text-[56px] mb-4">🐾</p>
+            <p class="text-surface-muted text-[15px]">Belum ada hewan tersedia saat ini.</p>
         </div>
         @endif
 
@@ -547,16 +801,18 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6">
 
         {{-- Card Utama --}}
-        <div class="relative overflow-hidden rounded-3xl bg-brand-primary px-10 py-14 sm:px-16 flex flex-col lg:flex-row items-center gap-12" >
-            
+        <div class="relative overflow-hidden rounded-3xl bg-brand-plum px-10 py-14 sm:px-16 flex flex-col lg:flex-row items-center gap-12
+                    border border-brand-soft/20"
+             style="box-shadow: 0 20px 60px rgba(63,13,97,0.6);">
 
             {{-- Blob dekoratif --}}
-            <div class="absolute -top-16 -right-16 w-72 h-72 rounded-full bg-brand-secondary opacity-50 pointer-events-none"></div>
-            <div class="absolute -bottom-20 right-20 w-48 h-48 rounded-full bg-brand-light opacity-15 pointer-events-none"></div>
-            <div class="absolute top-6 left-[42%] w-32 h-32 rounded-full bg-accent-base opacity-[0.06] pointer-events-none"></div>
+            <div class="absolute -top-16 -right-16 w-72 h-72 rounded-full bg-brand-primary opacity-30 pointer-events-none"></div>
+            <div class="absolute -bottom-20 right-20 w-48 h-48 rounded-full bg-brand-light opacity-10 pointer-events-none"></div>
+            <div class="absolute top-6 left-[42%] w-32 h-32 rounded-full bg-accent-base opacity-[0.08] pointer-events-none"></div>
+            
 
             {{-- Dekorasi paw bawah kiri --}}
-            <p class="absolute bottom-4 left-8 text-white/10 font-bold tracking-[6px] text-xs pointer-events-none select-none">
+            <p class="absolute bottom-4 left-8 text-white/20 font-bold tracking-[6px] text-xs pointer-events-none select-none">
                 🐾 🐾 🐾 🐾
             </p>
 
@@ -564,7 +820,7 @@
             <div class="relative z-10 flex-1 max-w-xl">
 
                 {{-- Badge --}}
-                <div class="inline-flex items-center gap-1.5 bg-accent-base/15 border border-accent-base/35
+                <div class="inline-flex items-center gap-1.5 bg-accent-base/20 border border-accent-base/40
                             text-accent-base text-xs font-semibold px-4 py-1.5 rounded-full mb-5">
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
                         <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
@@ -579,7 +835,7 @@
                 </h2>
 
                 {{-- Sub --}}
-                <p class="text-white/60 text-[15px] leading-relaxed mb-8 max-w-md">
+                <p class="text-white/75 text-[15px] leading-relaxed mb-8 max-w-md">
                     Mereka tidak butuh banyak — hanya kasih sayang dan tempat yang aman.
                     Jadilah bagian dari perubahan hari ini.
                 </p>
@@ -600,58 +856,63 @@
             </div>
 
             {{-- ── TENGAH: Gambar Hewan ── --}}
-<div class="absolute w-[280px] h-[280px] rounded-full bg-white/20 blur-3xl"></div>
+            <div class="absolute w-[280px] h-[280px] rounded-full bg-white/20 blur-3xl"></div>
 
-<img
-    src="{{ asset('images/CTA.png') }}"
-    alt="Companion"
-    class="relative h-[320px] w-auto object-contain drop-shadow-2xl opacity-85 translate-y-[70px] translate-x-[-40px]"
-    style="
-        filter:
-        drop-shadow(0 0 2px white)
-        drop-shadow(0 0 5px rgba(255,255,255,0.23))
-        drop-shadow(0 0 10px rgba(255,255,255,0.25))
-        drop-shadow(0 15px 25px rgba(0,0,0,0.25));
-    "
->
-            {{-- ── KANAN: Trust Cards ── --}}
+            <img
+                src="{{ asset('images/CTA.png') }}"
+                alt="Companion"
+                class="relative h-[320px] w-auto object-contain opacity-90 translate-y-[70px] translate-x-[-40px]"
+                style="
+                    filter:
+                   drop-shadow(0 0 4px rgba(255,255,255,0.4))
+                    drop-shadow(0 0 16px rgba(192,132,245,0.2))
+                    drop-shadow(0 0 30px rgba(192,132,245,0.1))
+                    drop-shadow(0 25px 35px rgba(63,13,97,0.3))">
+
+                     {{-- ── KANAN: Trust Cards ── --}}
             <div class="relative z-10 flex flex-col gap-3 lg:flex-shrink-0 w-full lg:w-[200px]">
-
+ 
                 {{-- Card 1 --}}
-                <div class="flex items-center gap-4 bg-white/[0.07] border border-white/10 rounded-2xl px-5 py-4">
-                    <div class="w-10 h-10 rounded-xl bg-brand-light/20 flex items-center justify-center text-lg flex-shrink-0">🐾</div>
+                <div class="flex items-center gap-4 backdrop-blur-md bg-white/10 border border-brand-soft/20
+                            rounded-2xl px-5 py-4"
+                     style="box-shadow: 0 0 8px rgba(245,238,255,0.04);">
+                    <div class="w-10 h-10 rounded-xl bg-white/15 flex items-center justify-center text-lg flex-shrink-0">🐾</div>
                     <div>
-                        <p class="text-white/45 text-[11px] font-medium mb-0.5">Hewan tersedia</p>
+                        <p class="text-white/55 text-[11px] font-medium mb-0.5">Hewan tersedia</p>
                         <p class="font-brand font-extrabold text-white text-lg leading-none">120+</p>
                     </div>
                 </div>
-
+ 
                 {{-- Divider --}}
-                <div class="w-px h-6 bg-white/[0.08] mx-auto"></div>
-
+                <div class="w-px h-6 bg-white/15 mx-auto"></div>
+ 
                 {{-- Card 2 — highlighted --}}
-                <div class="flex items-center gap-4 bg-accent-base/12 border border-accent-base/30 rounded-2xl px-5 py-4">
-                    <div class="w-10 h-10 rounded-xl bg-accent-base/20 flex items-center justify-center text-lg flex-shrink-0">🎀</div>
+                <div class="flex items-center gap-4 backdrop-blur-md bg-white/12 border border-brand-soft/35
+                            rounded-2xl px-5 py-4"
+                     style="box-shadow: 0 0 12px rgba(245,238,255,0.07), inset 0 0 8px rgba(245,238,255,0.03);">
+                    <div class="w-10 h-10 rounded-xl bg-brand-soft/20 flex items-center justify-center text-lg flex-shrink-0">🎀</div>
                     <div>
-                        <p class="text-accent-base/70 text-[11px] font-medium mb-0.5">Adopsi berhasil</p>
-                        <p class="font-brand font-extrabold text-accent-base text-lg leading-none">80+</p>
+                        <p class="text-brand-soft/70 text-[11px] font-medium mb-0.5">Adopsi berhasil</p>
+                        <p class="font-brand font-extrabold text-brand-soft text-lg leading-none">80+</p>
                     </div>
                 </div>
-
+ 
                 {{-- Divider --}}
-                <div class="w-px h-6 bg-white/[0.08] mx-auto"></div>
-
+                <div class="w-px h-6 bg-white/15 mx-auto"></div>
+ 
                 {{-- Card 3 --}}
-                <div class="flex items-center gap-4 bg-white/[0.07] border border-white/10 rounded-2xl px-5 py-4">
-                    <div class="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center text-lg flex-shrink-0">✅</div>
+                <div class="flex items-center gap-4 backdrop-blur-md bg-white/10 border border-brand-soft/20
+                            rounded-2xl px-5 py-4"
+                     style="box-shadow: 0 0 8px rgba(245,238,255,0.04);">
+                    <div class="w-10 h-10 rounded-xl bg-white/15 flex items-center justify-center text-lg flex-shrink-0">✅</div>
                     <div>
-                        <p class="text-white/45 text-[11px] font-medium mb-0.5">Diverifikasi oleh</p>
+                        <p class="text-white/55 text-[11px] font-medium mb-0.5">Diverifikasi oleh</p>
                         <p class="font-brand font-extrabold text-white text-[13px] leading-tight">PawHome Banjarmasin</p>
                     </div>
                 </div>
-
+ 
             </div>
-
+ 
         </div>
     </div>
 </section>
@@ -856,37 +1117,14 @@
 
 @push('scripts')
 <script>
+// ── Navbar scroll ──────────────────────────────────────
 $(window).on('scroll', function () {
     if ($(this).scrollTop() > 60) {
-
-        // Sembunyikan nama brand
-        $('#brand-name').css({
-            'opacity': '0',
-            'max-width': '0',
-        });
-
-        // Munculkan logo dengan animasi timbul
-        $('#logo-icon').css({
-            'opacity': '1',
-            'transform': 'scale(1) rotate(0deg)',
-            'width': 'auto',
-        });
-
+        $('#brand-name').css({ 'opacity': '0', 'max-width': '0' });
+        $('#logo-icon').css({ 'opacity': '1', 'transform': 'scale(1) rotate(0deg)', 'width': 'auto' });
     } else {
-
-        // Tampilkan nama brand lagi
-        $('#brand-name').css({
-            'opacity': '1',
-            'max-width': '200px',
-        });
-
-        // Sembunyikan logo
-        $('#logo-icon').css({
-            'opacity': '0',
-            'transform': 'scale(0.5) rotate(-20deg)',
-            'width': '0',
-        });
-
+        $('#brand-name').css({ 'opacity': '1', 'max-width': '200px' });
+        $('#logo-icon').css({ 'opacity': '0', 'transform': 'scale(0.5) rotate(-20deg)', 'width': '0' });
     }
 });
 
@@ -894,34 +1132,117 @@ $(window).on('scroll', function () {
 const sections = document.querySelectorAll('section[id], footer[id]');
 const navLinks = document.querySelectorAll('.nav-link');
 
-const observerOptions = {
-    root: null,
-    rootMargin: '-30% 0px -60% 0px', // trigger saat section di tengah viewport
-    threshold: 0
-};
-
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
             const activeId = entry.target.getAttribute('id');
-
             navLinks.forEach(link => {
                 const isActive = link.getAttribute('data-section') === activeId;
-
                 if (isActive) {
-                    // Active state
                     link.classList.remove('border-transparent', 'text-gray-500');
                     link.classList.add('border-accent-base', 'text-brand-primary', 'font-semibold');
                 } else {
-                    // Inactive state
                     link.classList.remove('border-accent-base', 'text-brand-primary', 'font-semibold');
                     link.classList.add('border-transparent', 'text-gray-500', 'font-medium');
                 }
             });
         }
     });
-}, observerOptions);
+}, { root: null, rootMargin: '-30% 0px -60% 0px', threshold: 0 });
 
 sections.forEach(section => observer.observe(section));
+
+// ── Count-up on scroll ─────────────────────────────────
+const countEls = document.querySelectorAll('.count-up');
+
+const runCount = (el) => {
+    const target   = parseInt(el.dataset.target, 10) || 0;
+    const duration = 1800;
+    const start    = performance.now();
+    const ease     = t => 1 - Math.pow(1 - t, 4);
+    const tick = (now) => {
+        const p = Math.min((now - start) / duration, 1);
+        el.textContent = Math.floor(ease(p) * target);
+        if (p < 1) requestAnimationFrame(tick);
+        else el.textContent = target;
+    };
+    requestAnimationFrame(tick);
+};
+
+const countObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+        if (e.isIntersecting) { runCount(e.target); countObserver.unobserve(e.target); }
+    });
+}, { threshold: 0.35 });
+
+countEls.forEach(el => countObserver.observe(el));
+
+// ── 1. Fade + slide-up saat scroll ────────────────────
+const statCards = document.querySelectorAll('.stat-item');
+
+statCards.forEach((card, i) => {
+    card.style.opacity   = '0';
+    card.style.transform = 'translateY(40px)';
+    card.style.transition = `opacity 0.6s ease ${i * 100}ms, transform 0.6s ease ${i * 100}ms`;
+});
+
+const slideObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+        if (e.isIntersecting) {
+            e.target.style.opacity   = '1';
+            e.target.style.transform = 'translateY(0)';
+            slideObserver.unobserve(e.target);
+        }
+    });
+}, { threshold: 0.15 });
+
+statCards.forEach(card => slideObserver.observe(card));
+
+// ── Typewriter word swap ───────────────────────────────
+const words = ['Kucingmu.', 'Anjingmu.', 'Kelincimu.', 'Sahabatmu.'];
+let index = 0;
+const el = document.getElementById('typeword');
+
+setInterval(() => {
+    el.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(-8px)';
+
+    setTimeout(() => {
+        index = (index + 1) % words.length;
+        el.textContent = words[index];
+        el.style.transform = 'translateY(8px)';
+        setTimeout(() => {
+            el.style.opacity = '1';
+            el.style.transform = 'translateY(0)';
+        }, 50);
+    }, 300);
+}, 2000);
+
+// ── 5. Border glow on hover ────────────────────────────
+// Sudah handled di CSS — tambahin style ini
+const style = document.createElement('style');
+style.textContent = `
+    .stat-item {
+        box-shadow: inset 0 0 0 1px transparent;
+        transition: box-shadow 0.3s ease, filter 0.3s ease;
+    }
+    .stat-item.bg-brand-primary:hover {
+        box-shadow: inset 0 0 0 1.5px rgba(192, 132, 245, 0.5), 0 0 24px rgba(63, 13, 97, 0.25);
+    }
+    .stat-item.bg-brand-soft:hover {
+        box-shadow: inset 0 0 0 1.5px rgba(124, 47, 168, 0.25), 0 0 24px rgba(124, 47, 168, 0.1);
+    }
+    .stat-item.bg-status-adopted-bg:hover {
+        box-shadow: inset 0 0 0 1.5px rgba(79, 70, 229, 0.3), 0 0 24px rgba(79, 70, 229, 0.12);
+    }
+    .stat-item.bg-accent-soft:hover {
+        box-shadow: inset 0 0 0 1.5px rgba(251, 191, 36, 0.4), 0 0 24px rgba(251, 191, 36, 0.15);
+    }
+`;
+document.head.appendChild(style);
+
 </script>
+
+
 @endpush

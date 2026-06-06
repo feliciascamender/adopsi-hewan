@@ -5,29 +5,34 @@ namespace App\Http\Controllers\Adopter;
 use App\Http\Controllers\Controller;
 use App\Models\Animal;
 use App\Models\Species;
-use Illuminate\View\View;
 
 class AnimalController extends Controller
 {
-    public function index(): View
+    public function index()
     {
-        $species = Species::withCount('animals')->get();
-
         $animals = Animal::with('species')
             ->where('status', 'available')
-            ->when(request('species_id'), fn ($query, $speciesId) => $query->where('species_id', $speciesId))
-            ->when(request('search'), fn ($query, $search) => $query->where('name', 'like', "%{$search}%"))
+            ->when(request('search'), fn($q) => $q->where('name', 'like', '%'.request('search').'%'))
+            ->when(request('species_id'), fn($q) => $q->where('species_id', request('species_id')))
+            ->when(request('gender'), fn($q) => $q->where('gender', request('gender')))
+            ->when(request('age'), function($q) {
+                return match(request('age')) {
+                    'baby'   => $q->where('age_months', '<', 6),
+                    'young'  => $q->whereBetween('age_months', [6, 12]),
+                    'adult'  => $q->where('age_months', '>', 12),
+                    default  => $q
+                };
+            })
             ->latest()
-            ->paginate(12)
-            ->withQueryString();
+            ->paginate(12);
+
+        $species = Species::all();
 
         return view('adopter.animals.index', compact('animals', 'species'));
     }
 
-    public function show(Animal $animal): View
+    public function show(Animal $animal)
     {
-        $animal->load(['species', 'medicalRecords']);
-
         return view('adopter.animals.show', compact('animal'));
     }
 }

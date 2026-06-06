@@ -108,18 +108,12 @@
 </div>
 
 {{-- Foto kucing --}}
-    <div class="absolute -bottom-[63px] right-0 z-10 pointer-events-none">
-        <img src="{{ asset('images/CatHome.png') }}"
-             class="h-[670px] w-auto object-contain object-bottom "
-             alt="Kucing">
-    </div>
-    {{-- Kaki kucing (depan wave) --}}
- <div class="absolute -bottom-[64px] -right-[14px] z-40 pointer-events-none">
-        <img src="{{ asset('images/PawCatHome.png') }}"
-             style="transform: rotate(-2deg);"
-             class="h-[700px] w-auto object-contain object-bottom "
-             alt="Kucing">
-    </div> 
+<div class="absolute -bottom-[63px] right-0 z-10 pointer-events-none">
+    <img src="{{ asset('images/CatHome.png') }}"
+         class="h-[100vh] max-h-[670px] min-h-[350px] w-auto object-contain object-bottom"
+         alt="Kucing">
+</div>
+  
 
     {{-- Konten teks --}}
     <div class="relative z-30 max-w-7xl mx-auto px-8 sm:px-12">
@@ -197,7 +191,14 @@
     </div>
 
 </section>
-   
+
+  {{-- Kaki kucing --}}
+<div class="relative h-0 pointer-events-none hidden sm:block" style="overflow: visible; z-index:40;">
+    <img src="{{ asset('images/PawCatHome.png') }}"
+         style="transform: rotate(-2deg); position: absolute; bottom: -64px; right: -16px;"
+         class="h-[400vh] sm:h-[400vh] lg:h-[400vh] max-h-[700px] min-h-[300px] w-auto object-contain object-bottom"
+         alt="Kucing">
+</div>
 
 {{-- ============================================================
      STATISTIK 
@@ -214,13 +215,7 @@
  
     <div class="relative max-w-6xl mx-auto px-4 sm:px-6">
  
-        {{-- Cat image --}}
-        <div class="absolute -bottom-[-527px] -right-[189px] z-40 pointer-events-none">
-            <img src="{{ asset('images/PawCatHome.png') }}"
-                 style="transform: rotate(-2deg);"
-                 class="h-[700px] w-auto object-contain object-bottom"
-                 alt="Kucing">
-        </div>
+    
  
       {{-- Section Header --}}
 <div class="mb-10">

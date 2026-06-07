@@ -1,51 +1,110 @@
 @extends('layouts.app')
+
 @section('title', 'Kelola Spesies — PawHome')
+
 @section('breadcrumb')
-    <span class="text-gray-400">Admin</span> / <span class="text-gray-700 font-medium">Kelola Spesies</span>
+    <span class="text-surface-muted">Admin</span> /
+    <span class="font-bold text-surface-dark">Kelola Spesies</span>
 @endsection
+
 @section('content')
-<div class="card">
-    <div class="flex items-center justify-between mb-5">
+<div class="space-y-5">
+
+    {{-- Header --}}
+    <div class="flex items-start justify-between">
         <div>
-            <h1 class="text-xl font-bold text-gray-900">Kelola Spesies</h1>
-            <p class="text-sm text-gray-500">Data kategori hewan.</p>
+            <div class="inline-flex items-center gap-1.5 bg-brand-soft text-brand-secondary text-xs font-semibold px-3 py-1.5 rounded-full border border-brand-light mb-3">
+                🏷️ Species Management
+            </div>
+            <h1 class="font-brand font-black text-2xl text-surface-dark">Kelola Spesies</h1>
+            <p class="text-sm text-surface-muted mt-1">Data kategori hewan yang tersedia di PawHome.</p>
         </div>
         <a href="{{ route('admin.species.create') }}" class="btn-primary">+ Tambah Spesies</a>
     </div>
-    <div class="overflow-x-auto">
-        <table class="w-full text-sm">
-            <thead class="text-left text-gray-500 border-b">
-                <tr>
-                    <th class="py-3">Nama</th>
-                    <th>Deskripsi</th>
-                    <th>Jumlah Hewan</th>
-                    <th class="text-right">Aksi</th>
-                </tr>
-            </thead>
-            <tbody class="divide-y divide-gray-100">
-                @forelse($species as $item)
-                <tr>
-                    <td class="py-3 font-semibold">{{ $item->name }}</td>
-                    <td>{{ Str::limit($item->description, 80) }}</td>
-                    <td>{{ $item->animals_count }}</td>
-                    <td class="text-right flex justify-end gap-3">
-                        <a class="text-orange-600 hover:text-orange-800" href="{{ route('admin.species.edit', $item) }}">Edit</a>
-                        
-                        <form action="{{ route('admin.species.destroy', $item) }}" method="POST" onsubmit="return confirm('Yakin ingin menghapus spesies ini?');">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="text-red-600 hover:text-red-800">Hapus</button>
-                        </form>
-                    </td>
-                </tr>
-                @empty
-                <tr>
-                    <td colspan="4" class="py-6 text-center text-gray-400">Belum ada data spesies.</td>
-                </tr>
-                @endforelse
-            </tbody>
-        </table>
+
+    {{-- Tabel --}}
+    <div class="bg-surface-white border border-surface-border rounded-2xl overflow-hidden">
+
+        <div class="px-6 py-3 border-b border-surface-border bg-surface-alt/50">
+            <p class="text-xs text-surface-muted">
+                Total <span class="font-bold text-surface-dark">{{ $species->total() }}</span> spesies terdaftar
+            </p>
+        </div>
+
+        <div class="overflow-x-auto">
+            <table class="w-full text-sm">
+                <thead>
+                    <tr class="border-b border-surface-border bg-surface-alt/30">
+                        <th class="text-left px-6 py-3 text-xs font-bold text-surface-muted uppercase tracking-wider">Nama</th>
+                        <th class="text-left px-4 py-3 text-xs font-bold text-surface-muted uppercase tracking-wider">Deskripsi</th>
+                        <th class="text-left px-4 py-3 text-xs font-bold text-surface-muted uppercase tracking-wider">Jumlah Hewan</th>
+                        <th class="text-right px-6 py-3 text-xs font-bold text-surface-muted uppercase tracking-wider">Aksi</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-surface-border">
+                    @forelse($species as $item)
+                    <tr class="hover:bg-brand-soft/30 transition-colors group">
+
+                        <td class="px-6 py-4">
+                            <p class="font-bold text-surface-dark group-hover:text-brand-secondary transition-colors">
+                                {{ $item->name }}
+                            </p>
+                        </td>
+
+                        <td class="px-4 py-4 text-surface-muted">
+                            {{ Str::limit($item->description, 80) ?: '—' }}
+                        </td>
+
+                        <td class="px-4 py-4">
+                            <span class="inline-flex items-center gap-1 text-xs font-bold px-2.5 py-1 rounded-full bg-brand-soft text-brand-secondary">
+                                🐾 {{ $item->animals_count }} hewan
+                            </span>
+                        </td>
+
+                        <td class="px-6 py-4">
+                            <div class="flex justify-end gap-2">
+                                <a href="{{ route('admin.species.edit', $item) }}"
+                                   class="inline-flex items-center text-xs font-bold
+                                          bg-brand-soft text-brand-secondary border border-brand-light
+                                          hover:bg-brand-primary hover:text-white hover:border-brand-primary
+                                          px-3 py-1.5 rounded-xl transition-all duration-200">
+                                    Edit
+                                </a>
+                                <form action="{{ route('admin.species.destroy', $item) }}"
+                                      method="POST"
+                                      onsubmit="return confirm('Yakin ingin menghapus spesies {{ $item->name }}?');">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit"
+                                            class="inline-flex items-center text-xs font-bold
+                                                   bg-status-rejected-bg text-status-rejected-text border border-status-rejected-text/20
+                                                   hover:bg-status-rejected-text hover:text-white
+                                                   px-3 py-1.5 rounded-xl transition-all duration-200">
+                                        Hapus
+                                    </button>
+                                </form>
+                            </div>
+                        </td>
+
+                    </tr>
+                    @empty
+                    <tr>
+                        <td colspan="4" class="px-6 py-16 text-center">
+                            <span class="text-5xl block mb-4">🏷️</span>
+                            <p class="font-bold text-surface-dark mb-1">Belum ada spesies</p>
+                            <p class="text-sm text-surface-muted">Tambahkan spesies pertama untuk mulai mengelola hewan.</p>
+                        </td>
+                    </tr>
+                    @endforelse
+                </tbody>
+            </table>
+        </div>
+
     </div>
-    <div class="mt-4">{{ $species->links() }}</div>
+
+    @if($species->hasPages())
+    <div>{{ $species->withQueryString()->links() }}</div>
+    @endif
+
 </div>
 @endsection

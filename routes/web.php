@@ -79,5 +79,6 @@ Route::prefix('adopter')->name('adopter.')->middleware(['auth', 'role:adopter'])
     Route::get('/', [AdopterAdoptionController::class, 'index'])->name('index');
     Route::get('/create', [AdopterAdoptionController::class, 'create'])->name('create');
     Route::post('/', [AdopterAdoptionController::class, 'store'])->name('store');
+    Route::get('/{adoption}', [AdopterAdoptionController::class, 'show'])->name('show');
     });
     });

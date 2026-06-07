@@ -11,7 +11,6 @@
             📋 Riwayat adopsi
         </div>
         <h1 class="font-brand font-black text-2xl text-surface-dark">Pengajuan Saya</h1>
-        <p class="text-sm text-surface-muted mt-1">Pantau status pengajuan adopsimu di sini.</p>
     </div>
     <a href="{{ route('adopter.adoptions.create') }}"
        class="inline-flex items-center gap-2 bg-brand-primary hover:bg-brand-secondary
@@ -30,9 +29,6 @@
             ? 'bg-brand-primary text-white border-brand-primary shadow-sm'
             : 'bg-surface-white text-surface-muted border-surface-border hover:border-brand-light hover:text-brand-secondary' }}">
         {{ $label }}
-        @if($val === '')
-            <span class="ml-1 opacity-60">({{ $adoptions->count() }})</span>
-        @endif
     </a>
     @endforeach
 </div>

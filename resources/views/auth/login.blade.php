@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.guest')
  
 @section('title', 'Masuk — PawHome Banjarmasin')
  
@@ -41,7 +41,7 @@
  
             {{-- Error --}}
             @if ($errors->any())
-                <div class="bg-white/10 border border-white/20 text-white text-sm px-4 py-3 rounded-2xl mb-4">
+                <div class="bg-status-rejected-bg border border-status-rejected-text/20 text-status-rejected-text text-sm px-4 py-3 rounded-2xl mb-4">
                     {{ $errors->first() }}
                 </div>
             @endif

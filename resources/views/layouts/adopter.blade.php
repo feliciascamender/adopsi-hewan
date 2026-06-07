@@ -133,7 +133,121 @@
 <main class="max-w-7xl mx-auto px-4 sm:px-6 pb-16 pt-2">
     @yield('content')
 </main>
- 
+
+@if($__env->hasSection('show_footer'))
+
+    {{-- ============================================================
+         TENTANG KAMI
+         ============================================================ --}}
+    <section class="py-20 bg-surface-alt overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-10">
+
+            <div class="bg-white rounded-3xl border border-surface-border shadow-sm overflow-hidden">
+                <div class="grid grid-cols-1 lg:grid-cols-2 min-h-[360px]">
+
+                    {{-- KIRI: Konten --}}
+                    <div class="p-8 sm:p-10 flex flex-col justify-center">
+                        <h2 class="font-brand font-extrabold text-2xl sm:text-3xl text-surface-dark leading-tight mb-3">
+                            Lahir dari <span class="text-brand-secondary">Kepedulian,</span><br>
+                            Tumbuh dari <span class="text-accent-strong">Kepercayaan.</span>
+                        </h2>
+        
+    
+                        <div class="flex items-center gap-3 pt-4 border-t border-surface-border">
+                            <div class="w-8 h-8 rounded-full bg-brand-primary flex items-center justify-center flex-shrink-0">
+                                <span class="text-white text-xs font-bold">🖤</span>
+                            </div>
+                            <p class="text-surface-muted text-xs leading-relaxed">
+                                Dikelola oleh tim relawan dan shelter hewan lokal Banjarmasin,
+                                <span class="text-brand-secondary font-medium">karena setiap hewan berhak pulang ke rumah yang hangat.</span>
+                            </p>
+                        </div>
+                    </div>
+
+                    {{-- KANAN: GIF --}}
+                    <div class="relative hidden lg:flex items-center justify-center bg-white/30 overflow-hidden">
+                        <div class="absolute top-[-60px] right-[-60px] w-[150px] h-[150px] rounded-full bg-brand-light opacity-20 pointer-events-none"></div>
+                        <div class="absolute bottom-[-40px] left-[-40px] w-[150px] h-[150px] rounded-full bg-accent-base opacity-10 pointer-events-none"></div>
+                        <div class="relative z-10 flex flex-col items-center gap-2">
+                            <img src="{{ asset('images/Gif2.gif') }}"
+                                 alt="PawHome mascot animation"
+                                 class="w-[150px] h-auto">
+                            <div class="inline-flex items-center gap-1.5 bg-white/80 backdrop-blur-sm border border-surface-border rounded-full px-4 py-2">
+                                <span class="w-2 h-2 rounded-full bg-status-available-text animate-pulse flex-shrink-0"></span>
+                                <span class="text-[11px] font-medium text-surface-dark">Shelter aktif melayani adopsi</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {{-- ============================================================
+         FOOTER ADOPTER — Compact Version
+         ============================================================ --}}
+    <footer class="bg-[#54346b] relative overflow-hidden">
+
+        <div class="absolute top-[-60px] left-[-60px] w-[240px] h-[120px] rounded-full bg-white opacity-[0.04] pointer-events-none"></div>
+        <div class="absolute bottom-[-40px] right-[-40px] w-[180px] h-[120px] rounded-full bg-white opacity-[0.04] pointer-events-none"></div>
+
+        <div class="relative z-10 max-w-7xl mx-auto px-6 sm:px-10 py-5">
+            <div class="flex flex-col sm:flex-row items-center justify-between gap-6">
+
+                <div class="flex items-center gap-3">
+                    <img src="{{ asset('images/logoPurple.png') }}"
+                         alt="PawHome Logo"
+                         class="h-10 w-auto"
+                         style="filter: brightness(0) invert(1) opacity(0.9);">
+                    <div>
+                        <p class="text-white font-bold text-sm leading-tight">PawHome Banjarmasin</p>
+                        <p class="text-white/40 text-xs mt-0.5">Platform adopsi hewan peliharaan</p>
+                    </div>
+                </div>
+
+                <div class="hidden sm:flex items-center gap-6">
+                    <div class="flex items-center gap-2">
+                        <div class="w-7 h-7 rounded-full bg-white/10 border border-white/20 flex items-center justify-center">
+                            <img src="{{ asset('images/certified1.webp') }}" class="w-4 h-4 object-contain">
+                        </div>
+                        <span class="text-white/50 text-xs">Verified Healthy</span>
+                    </div>
+                    <div class="w-px h-4 bg-white/10"></div>
+                    <div class="flex items-center gap-2">
+                        <div class="w-7 h-7 rounded-full bg-white/10 border border-white/20 flex items-center justify-center">
+                            <img src="{{ asset('images/certified2.webp') }}" class="w-4 h-4 object-contain">
+                        </div>
+                        <span class="text-white/50 text-xs">100% Transparent</span>
+                    </div>
+                    <div class="w-px h-4 bg-white/10"></div>
+                    <div class="flex items-center gap-2">
+                        <div class="w-7 h-7 rounded-full bg-white/10 border border-white/20 flex items-center justify-center">
+                            <img src="{{ asset('images/certified3.png') }}" class="w-4 h-4 object-contain">
+                        </div>
+                        <span class="text-white/50 text-xs">Local Shelter</span>
+                    </div>
+                </div>
+
+                <div class="text-center sm:text-right">
+                    <p class="text-white/40 text-xs">Kalimantan Selatan, Indonesia</p>
+                    <p class="text-white/20 text-xs mt-0.5">© {{ date('Y') }} PawHome. All rights reserved.</p>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="relative z-10 overflow-hidden">
+            <h2 class="font-brand font-black text-white select-none pointer-events-none leading-none text-center w-full"
+                style="opacity: 0.07; font-size: clamp(2rem, 11vw, 11rem); line-height: 0.85;">
+                PawHome
+            </h2>
+        </div>
+
+    </footer>
+@endif
+
+
 @stack('scripts')
 <script>
     setTimeout(function () {

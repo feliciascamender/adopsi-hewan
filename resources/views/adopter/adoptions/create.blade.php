@@ -253,7 +253,7 @@
                     <p class="field-error text-xs text-status-rejected-text hidden" id="err-reason"></p>
                     <p class="text-xs text-surface-muted ml-auto">
                         <span id="reason-count">0</span> karakter
-                        <span class="text-surface-muted">(min. 20)</span>
+                        <span class="text-surface-muted">(min. 50)</span>
                     </p>
                 </div>
  

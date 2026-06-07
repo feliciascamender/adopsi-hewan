@@ -1,4 +1,6 @@
 @extends('layouts.adopter')
+
+@section('show_footer', true)
  
 @section('title', 'Dashboard — PawHome')
  

@@ -12,42 +12,39 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@700;800&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-    {{-- Tailwind via Vite. Jika asset belum di-build saat development, pakai CDN fallback agar halaman auth tetap bisa tampil. --}}
     @if (file_exists(public_path('build/manifest.json')) || file_exists(public_path('hot')))
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     @else
         <script src="https://cdn.tailwindcss.com"></script>
     @endif
 
-    {{-- jQuery via CDN --}}
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
 
-   <style>
-    body { font-family: 'Figtree', sans-serif; }
-    .font-brand { font-family: 'Inter', sans-serif; }
-</style>
+    <style>
+        body { font-family: 'Figtree', sans-serif; }
+        .font-brand { font-family: 'Inter', sans-serif; }
+    </style>
 
     @stack('styles')
 </head>
 <body class="bg-surface-alt text-surface-dark antialiased">
 
-@auth
 <div class="min-h-screen bg-surface-alt">
     <aside class="fixed left-0 top-0 z-50 flex h-full w-72 flex-col bg-brand-primary">
-    <div class="border-b border-white/10 px-6 py-6">
-        <a href="{{ auth()->user()->role === 'admin' ? route('admin.dashboard') : route('adopter.dashboard') }}"
-           class="flex items-center gap-3">
-            <div class="flex h-12 w-12 items-center justify-center rounded-2xl overflow-hidden">
-                <img src="{{ asset('images/Logopurple.png') }}"
-                    alt="PawHome Logo"
-                    class="h-full w-full object-contain">
-            </div>
-            <div>
-                <p class="font-brand text-lg font-extrabold leading-tight text-white">PawHome</p>
-                <p class="text-xs font-semibold text-white/50">Adoption Center</p>
-            </div>
-        </a>
-    </div>
+        <div class="border-b border-white/10 px-6 py-6">
+            <a href="{{ auth()->user()->role === 'admin' ? route('admin.dashboard') : route('adopter.dashboard') }}"
+               class="flex items-center gap-3">
+                <div class="flex h-12 w-12 items-center justify-center rounded-2xl overflow-hidden">
+                    <img src="{{ asset('images/Logopurple.png') }}"
+                        alt="PawHome Logo"
+                        class="h-full w-full object-contain">
+                </div>
+                <div>
+                    <p class="font-brand text-lg font-extrabold leading-tight text-white">PawHome</p>
+                    <p class="text-xs font-semibold text-white/50">Adoption Center</p>
+                </div>
+            </a>
+        </div>
 
         <nav class="flex-1 space-y-1 overflow-y-auto px-4 py-5">
             @if(auth()->user()->role === 'admin')
@@ -126,10 +123,9 @@
 
         <div class="border-t border-white/10 px-4 py-5">
             <div class="mb-4 flex items-center gap-3 rounded-2xl bg-white/5 px-4 py-3">
-               <div class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-accent-base text-sm font-extrabold text-surface-dark">
+                <div class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-accent-base text-sm font-extrabold text-surface-dark">
                     {{ strtoupper(substr(auth()->user()->name, 0, 1)) }}
                 </div>
-
                 <div class="min-w-0">
                     <p class="truncate text-sm font-bold text-white">
                         {{ auth()->user()->name }}
@@ -201,13 +197,9 @@
         </div>
     </main>
 </div>
-@else
-    @yield('content')
-@endauth
 
 @stack('scripts')
 <script>
-    // Auto-hide flash messages setelah 4 detik
     setTimeout(function () {
         $('#flash-success, #flash-error').fadeOut(500);
     }, 4000);

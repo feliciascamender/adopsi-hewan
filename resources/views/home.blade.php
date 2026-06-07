@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.guest')
 
 @section('title', 'PawHome Banjarmasin — Adopsi Hewan Peliharaan')
 
@@ -192,18 +192,21 @@
 
 </section>
 
-  {{-- Kaki kucing --}}
-<div class="relative h-0 pointer-events-none hidden sm:block" style="overflow: visible; z-index:40;">
-    <img src="{{ asset('images/PawCatHome.png') }}"
-         style="transform: rotate(-2deg); position: absolute; bottom: -64px; right: -16px;"
-         class="h-[400vh] sm:h-[400vh] lg:h-[400vh] max-h-[700px] min-h-[300px] w-auto object-contain object-bottom"
-         alt="Kucing">
-</div>
 
 {{-- ============================================================
      STATISTIK 
      ============================================================ --}}
-<section id="statistik" class="pt-20 pb-24 relative overflow-hidden bg-white">
+<section id="statistik" class="pt-20 pb-24 relative bg-white" style="overflow-x: clip;">
+
+    {{-- Kaki kucing --}}
+    <div class="relative h-0 pointer-events-none hidden sm:block" style="overflow: visible; z-index:40;">
+        <img src="{{ asset('images/PawCatHome.png') }}"
+             style="transform: rotate(-2deg); position: absolute; bottom: 14.8px; right: -13px;"
+             class="h-[400vh] sm:h-[100vh] lg:h-[100vh] max-h-[700px] min-h-[300px] w-auto object-contain object-bottom"
+             alt="Kucing">
+    </div>
+
+
  
     {{-- Decorative paw --}}
     <div class="absolute inset-0 pointer-events-none select-none z-70 flex items-center justify-end pr-[8%]">
@@ -801,10 +804,9 @@
              style="box-shadow: 0 20px 60px rgba(63,13,97,0.6);">
 
             {{-- Blob dekoratif --}}
-            <div class="absolute -top-16 -right-16 w-72 h-72 rounded-full bg-brand-primary opacity-30 pointer-events-none"></div>
+            <div class="absolute -top-16 -right-16 w-72 h-72 rounded-full bg-brand-secondary opacity-30 pointer-events-none"></div>
             <div class="absolute -bottom-20 right-20 w-48 h-48 rounded-full bg-brand-light opacity-10 pointer-events-none"></div>
             <div class="absolute top-6 left-[42%] w-32 h-32 rounded-full bg-accent-base opacity-[0.08] pointer-events-none"></div>
-            
 
             {{-- Dekorasi paw bawah kiri --}}
             <p class="absolute bottom-4 left-8 text-white/20 font-bold tracking-[6px] text-xs pointer-events-none select-none">
@@ -859,14 +861,14 @@
                 class="relative h-[320px] w-auto object-contain opacity-90 translate-y-[70px] translate-x-[-40px]"
                 style="
                     filter:
-                   drop-shadow(0 0 4px rgba(255,255,255,0.4))
+                    drop-shadow(0 0 4px rgba(255,255,255,0.4))
                     drop-shadow(0 0 16px rgba(192,132,245,0.2))
                     drop-shadow(0 0 30px rgba(192,132,245,0.1))
-                    drop-shadow(0 25px 35px rgba(63,13,97,0.3))">
+                    drop-shadow(0 25px 35px rgba(63,13,97,0.3));">
 
-                     {{-- ── KANAN: Trust Cards ── --}}
+            {{-- ── KANAN: Trust Cards ── --}}
             <div class="relative z-10 flex flex-col gap-3 lg:flex-shrink-0 w-full lg:w-[200px]">
- 
+
                 {{-- Card 1 --}}
                 <div class="flex items-center gap-4 backdrop-blur-md bg-white/10 border border-brand-soft/20
                             rounded-2xl px-5 py-4"
@@ -877,24 +879,24 @@
                         <p class="font-brand font-extrabold text-white text-lg leading-none">120+</p>
                     </div>
                 </div>
- 
+
                 {{-- Divider --}}
                 <div class="w-px h-6 bg-white/15 mx-auto"></div>
- 
-                {{-- Card 2 — highlighted --}}
-                <div class="flex items-center gap-4 backdrop-blur-md bg-white/12 border border-brand-soft/35
+
+                {{-- Card 2 --}}
+                <div class="flex items-center gap-4 backdrop-blur-md bg-white/10 border border-brand-soft/35
                             rounded-2xl px-5 py-4"
-                     style="box-shadow: 0 0 12px rgba(245,238,255,0.07), inset 0 0 8px rgba(245,238,255,0.03);">
+                     style="box-shadow: 0 0 12px rgba(245,238,255,0.07);">
                     <div class="w-10 h-10 rounded-xl bg-brand-soft/20 flex items-center justify-center text-lg flex-shrink-0">🎀</div>
                     <div>
                         <p class="text-brand-soft/70 text-[11px] font-medium mb-0.5">Adopsi berhasil</p>
                         <p class="font-brand font-extrabold text-brand-soft text-lg leading-none">80+</p>
                     </div>
                 </div>
- 
+
                 {{-- Divider --}}
                 <div class="w-px h-6 bg-white/15 mx-auto"></div>
- 
+
                 {{-- Card 3 --}}
                 <div class="flex items-center gap-4 backdrop-blur-md bg-white/10 border border-brand-soft/20
                             rounded-2xl px-5 py-4"
@@ -905,9 +907,9 @@
                         <p class="font-brand font-extrabold text-white text-[13px] leading-tight">PawHome Banjarmasin</p>
                     </div>
                 </div>
- 
+
             </div>
- 
+
         </div>
     </div>
 </section>

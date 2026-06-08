@@ -7,6 +7,9 @@
     
     <title>@yield('title', 'PawHome Banjarmasin')</title>
 
+    {{-- Favicon Logo PawHome --}}
+    <link rel="icon" type="image/png" href="{{ asset('images/Logopurple.png') }}">
+
     {{-- Google Fonts --}}
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -72,7 +75,7 @@
 
                 <a href="{{ route('admin.animals.index') }}"
                    class="flex items-center gap-3 rounded-2xl px-4 py-3 text-sm font-bold transition
-                   {{ request()->routeIs('admin.animals.*')
+                   {{ request()->routeIs(['admin.animals.*', 'admin.medical.*'])
                         ? 'bg-brand-secondary text-white shadow-lg shadow-purple-950/20'
                         : 'text-white/65 hover:bg-white/10 hover:text-white' }}">
                     <span class="text-lg">🐱</span>

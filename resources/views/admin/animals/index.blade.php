@@ -165,17 +165,20 @@
                                           px-3 py-1.5 rounded-xl transition-all duration-200">
                                     Edit
                                 </a>
-                                <form action="{{ route('admin.animals.destroy', $animal) }}"
-                                      method="POST"
-                                      onsubmit="return confirm('Yakin ingin menghapus {{ $animal->name }}?')">
+                                
+                                {{-- Form Hapus dengan ID dinamis dan onclick SweetAlert --}}
+                                <form id="form-hapus-{{ $animal->id }}" 
+                                      action="{{ route('admin.animals.destroy', $animal) }}"
+                                      method="POST">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit"
+                                    <button type="button" onclick="konfirmasiHapus('{{ $animal->id }}')"
                                             class="text-xs font-bold text-status-rejected-text hover:bg-status-rejected-bg
                                                    px-3 py-1.5 rounded-xl transition-all duration-200">
                                         Hapus
                                     </button>
                                 </form>
+
                             </div>
                         </td>
 
@@ -212,4 +215,27 @@
     @endif
 
 </div>
+
+{{-- Script SweetAlert2 untuk konfirmasi hapus --}}
+@push('scripts')
+<script>
+    function konfirmasiHapus(id) {
+        Swal.fire({
+            title: 'Yakin Hapus Hewan?',
+            text: "Data hewan ini akan terhapus secara permanen.",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#B91C1C', 
+            cancelButtonColor: '#A89991',
+            confirmButtonText: 'Ya, Hapus',
+            cancelButtonText: 'Batal',
+            reverseButtons: true
+        }).then((result) => {
+            if (result.isConfirmed) {
+                document.getElementById('form-hapus-' + id).submit();
+            }
+        })
+    }
+</script>
+@endpush
 @endsection

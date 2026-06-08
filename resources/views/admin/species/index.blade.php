@@ -70,12 +70,14 @@
                                           px-3 py-1.5 rounded-xl transition-all duration-200">
                                     Edit
                                 </a>
-                                <form action="{{ route('admin.species.destroy', $item) }}"
-                                      method="POST"
-                                      onsubmit="return confirm('Yakin ingin menghapus spesies {{ $item->name }}?');">
+                                
+                                {{-- Form Hapus dengan ID dinamis dan onclick SweetAlert --}}
+                                <form id="form-hapus-spesies-{{ $item->id }}" 
+                                      action="{{ route('admin.species.destroy', $item) }}"
+                                      method="POST">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit"
+                                    <button type="button" onclick="konfirmasiHapusSpesies('{{ $item->id }}')"
                                             class="inline-flex items-center text-xs font-bold
                                                    bg-status-rejected-bg text-status-rejected-text border border-status-rejected-text/20
                                                    hover:bg-status-rejected-text hover:text-white
@@ -107,4 +109,27 @@
     @endif
 
 </div>
+
+{{-- Script SweetAlert2 untuk konfirmasi hapus spesies --}}
+@push('scripts')
+<script>
+    function konfirmasiHapusSpesies(id) {
+        Swal.fire({
+            title: 'Yakin Hapus Spesies?',
+            text: "Pastikan tidak ada hewan yang sedang menggunakan spesies ini.",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#B91C1C',
+            cancelButtonColor: '#A89991',
+            confirmButtonText: 'Ya, Hapus',
+            cancelButtonText: 'Batal',
+            reverseButtons: true
+        }).then((result) => {
+            if (result.isConfirmed) {
+                document.getElementById('form-hapus-spesies-' + id).submit();
+            }
+        })
+    }
+</script>
+@endpush
 @endsection

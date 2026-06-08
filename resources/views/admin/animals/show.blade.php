@@ -69,6 +69,7 @@
                                             @case('Kucing') 🐱 @break
                                             @case('Anjing') 🐶 @break
                                             @case('Kelinci') 🐰 @break
+                                            @case('Hamster') 🐹 @break
                                             @default 🐾
                                         @endswitch
                                     </span>

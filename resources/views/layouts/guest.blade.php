@@ -7,6 +7,9 @@
 
     <title>@yield('title', 'PawHome Banjarmasin')</title>
 
+    {{-- Favicon Logo PawHome --}}
+    <link rel="icon" type="image/png" href="{{ asset('images/Logopurple.png') }}">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@700;800&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">

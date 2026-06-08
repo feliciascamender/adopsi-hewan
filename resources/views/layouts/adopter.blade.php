@@ -6,6 +6,9 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
  
     <title>@yield('title', 'PawHome — Adopter')</title>
+
+    {{-- Favicon Logo PawHome --}}
+    <link rel="icon" type="image/png" href="{{ asset('images/Logopurple.png') }}">
  
     {{-- Google Fonts --}}
     <link rel="preconnect" href="https://fonts.googleapis.com">

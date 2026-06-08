@@ -105,16 +105,14 @@
                 </div>
             </div>
 
-            {{-- Deskripsi --}}
+            {{-- Deskripsi (SUDAH DIRAPATKAN) --}}
             <div class="bg-surface-white border border-surface-border rounded-2xl overflow-hidden">
                 <div class="px-6 py-4 border-b border-surface-border bg-surface-alt/50 flex items-center gap-2">
                     <span class="text-base">📝</span>
                     <p class="text-sm font-bold text-surface-dark">Deskripsi</p>
                 </div>
                 <div class="p-6">
-                    <p class="text-sm text-surface-dark leading-relaxed whitespace-pre-line">
-                        {{ $animal->description ?: 'Tidak ada deskripsi.' }}
-                    </p>
+                    <p class="text-sm text-surface-dark leading-relaxed whitespace-pre-line">{{ $animal->description ?: 'Tidak ada deskripsi.' }}</p>
                 </div>
             </div>
 
@@ -156,12 +154,13 @@
                               font-bold text-sm py-3 rounded-xl transition-all duration-200">
                         ✏️ Edit Data Hewan
                     </a>
-                    <form action="{{ route('admin.animals.destroy', $animal) }}"
-                          method="POST"
-                          onsubmit="return confirm('Yakin ingin menghapus {{ $animal->name }}?');">
+                    
+                    {{-- Form Hapus dengan SweetAlert2 --}}
+                    <form id="form-hapus-hewan-{{ $animal->id }}" action="{{ route('admin.animals.destroy', $animal) }}" method="POST">
                         @csrf
                         @method('DELETE')
-                        <button type="submit"
+                        <button type="button" 
+                                onclick="konfirmasiHapusHewan('{{ $animal->id }}')"
                                 class="w-full flex items-center justify-center gap-2
                                        bg-status-rejected-bg text-status-rejected-text border border-status-rejected-text/20
                                        hover:bg-status-rejected-text hover:text-white
@@ -177,4 +176,27 @@
     </div>
 
 </div>
+
+{{-- Script Animasi SweetAlert2 --}}
+@push('scripts')
+<script>
+    function konfirmasiHapusHewan(id) {
+        Swal.fire({
+            title: 'Yakin Hapus Hewan?',
+            text: "Data hewan ini akan terhapus secara permanen beserta riwayat medisnya.",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#B91C1C',
+            cancelButtonColor: '#A89991',
+            confirmButtonText: 'Ya, Hapus',
+            cancelButtonText: 'Batal',
+            reverseButtons: true
+        }).then((result) => {
+            if (result.isConfirmed) {
+                document.getElementById('form-hapus-hewan-' + id).submit();
+            }
+        })
+    }
+</script>
+@endpush
 @endsection

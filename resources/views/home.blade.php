@@ -322,7 +322,7 @@
                 <div class="relative z-10">
                     <p class="font-brand font-black text-status-adopted-text leading-none count-up
                               group-hover:scale-[1.04] transition-transform duration-300 inline-block origin-left"
-                       data-target="{{ $stats['adopted'] }}"
+                       data-target="{{ $stats['pending'] }}"
                        style="font-size: clamp(54px, 6vw, 86px);">0</p>
                     <p class="text-status-adopted-text/35 text-[16px] mt-2.5 font-semibold tracking-wide">💜 Tahap Proses</p>
                 </div>

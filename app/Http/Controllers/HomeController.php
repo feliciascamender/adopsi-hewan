@@ -15,6 +15,7 @@ class HomeController extends Controller
             'available' => Animal::where('status', 'available')->count(),
             'adopted' => Animal::where('status', 'adopted')->count(),
             'total_adoptions' => Adoption::where('status', 'approved')->count(),
+            'pending' => Animal::where('status', 'pending')->count(),
         ];
 
         $latestAnimals = Animal::with('species')

@@ -158,7 +158,7 @@
                     <p class="text-sm font-bold text-status-available-text">✅ Setujui Pengajuan</p>
                 </div>
                 <div class="p-5">
-                    <form method="POST" action="{{ route('admin.adoptions.approve', $adoption) }}">
+                    <form id="form-setujui" method="POST" action="{{ route('admin.adoptions.approve', $adoption) }}">
                         @csrf
                         @method('PATCH')
                         <div class="mb-4">
@@ -173,8 +173,8 @@
                                              text-sm text-surface-dark placeholder-surface-muted resize-none
                                              focus:outline-none focus:ring-2 focus:ring-status-available-text/30 focus:border-transparent transition-all"></textarea>
                         </div>
-                        <button type="submit"
-                                onclick="return confirm('Yakin ingin menyetujui pengajuan ini?')"
+                        <button type="button"
+                                onclick="konfirmasiSetujui()"
                                 class="w-full flex items-center justify-center gap-2 bg-status-available-text hover:bg-green-700
                                        text-white font-bold text-sm py-3 rounded-xl
                                        hover:-translate-y-0.5 transition-all duration-200 shadow-lg shadow-green-500/20">
@@ -190,7 +190,7 @@
                     <p class="text-sm font-bold text-status-rejected-text">❌ Tolak Pengajuan</p>
                 </div>
                 <div class="p-5">
-                    <form method="POST" action="{{ route('admin.adoptions.reject', $adoption) }}">
+                    <form id="form-tolak" method="POST" action="{{ route('admin.adoptions.reject', $adoption) }}">
                         @csrf
                         @method('PATCH')
                         <div class="mb-4">
@@ -205,8 +205,8 @@
                                              text-sm text-surface-dark placeholder-surface-muted resize-none
                                              focus:outline-none focus:ring-2 focus:ring-status-rejected-text/30 focus:border-transparent transition-all"></textarea>
                         </div>
-                        <button type="submit"
-                                onclick="return confirm('Yakin ingin menolak pengajuan ini?')"
+                        <button type="button"
+                                onclick="konfirmasiTolak()"
                                 class="w-full flex items-center justify-center gap-2 bg-status-rejected-text hover:bg-red-700
                                        text-white font-bold text-sm py-3 rounded-xl
                                        hover:-translate-y-0.5 transition-all duration-200 shadow-lg shadow-red-500/20">
@@ -255,4 +255,45 @@
     </div>
  
 </div>
+
+{{-- Script SweetAlert2 --}}
+@push('scripts')
+<script>
+    function konfirmasiSetujui() {
+        Swal.fire({
+            title: 'Setujui Pengajuan?',
+            text: "Adopter akan mendapatkan notifikasi bahwa pengajuan disetujui.",
+            icon: 'success',
+            showCancelButton: true,
+            confirmButtonColor: '#10B981', 
+            cancelButtonColor: '#A89991',
+            confirmButtonText: 'Ya, Setujui',
+            cancelButtonText: 'Batal',
+            reverseButtons: true
+        }).then((result) => {
+            if (result.isConfirmed) {
+                document.getElementById('form-setujui').submit();
+            }
+        })
+    }
+
+    function konfirmasiTolak() {
+        Swal.fire({
+            title: 'Yakin Tolak Pengajuan?',
+            text: "Data pengajuan akan diubah menjadi status Ditolak.",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#B91C1C', 
+            cancelButtonColor: '#A89991',
+            confirmButtonText: 'Ya, Tolak',
+            cancelButtonText: 'Batal',
+            reverseButtons: true
+        }).then((result) => {
+            if (result.isConfirmed) {
+                document.getElementById('form-tolak').submit();
+            }
+        })
+    }
+</script>
+@endpush
 @endsection

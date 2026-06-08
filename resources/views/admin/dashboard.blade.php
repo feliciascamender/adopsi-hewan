@@ -136,8 +136,8 @@
         <div class="bg-surface-white border border-surface-border rounded-2xl px-5 py-4 flex items-center gap-4">
             <div class="w-10 h-10 rounded-xl bg-status-adopted-bg flex items-center justify-center text-lg flex-shrink-0">💜</div>
             <div>
-                <p class="text-xs text-surface-muted font-semibold">Sudah Diadopsi</p>
-                <p class="font-brand font-black text-2xl text-status-adopted-text">{{ $stats['adopted'] }}</p>
+                <p class="text-xs text-surface-muted font-semibold">Sedang Ditinjau</p>
+                <p class="font-brand font-black text-2xl text-status-adopted-text">{{ $stats['pending_adoptions'] }}</p> 
             </div>
         </div>
         <div class="bg-surface-white border border-surface-border rounded-2xl px-5 py-4 flex items-center gap-4">

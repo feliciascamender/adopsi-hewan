@@ -317,14 +317,14 @@
                 <div class="flex items-center gap-2.5 relative z-10">
                     <span class="text-[23px] font-black opacity-25 tracking-[0.3em] group-hover:opacity-100 transition-opacity duration-300">💜</span>
                     <span class="w-px h-3 bg-status-adopted-text/15"></span>
-                    <span class="text-xs font-bold text-status-adopted-text/50 transition-all duration-300 group-hover:text-status-adopted group-hover:text-lg">Sudah Diadopsi</span>
+                    <span class="text-xs font-bold text-status-adopted-text/50 transition-all duration-300 group-hover:text-status-adopted group-hover:text-lg">Sedang Ditinjau</span>
                 </div>
                 <div class="relative z-10">
                     <p class="font-brand font-black text-status-adopted-text leading-none count-up
                               group-hover:scale-[1.04] transition-transform duration-300 inline-block origin-left"
                        data-target="{{ $stats['adopted'] }}"
                        style="font-size: clamp(54px, 6vw, 86px);">0</p>
-                    <p class="text-status-adopted-text/35 text-[16px] mt-2.5 font-semibold tracking-wide">💜 Telah berpindah</p>
+                    <p class="text-status-adopted-text/35 text-[16px] mt-2.5 font-semibold tracking-wide">💜 Tahap Proses</p>
                 </div>
                <div class="absolute -right-9 -bottom-12 z-20 select-none
             opacity-[0.1] group-hover:opacity-[0.9] group-hover:scale-110
@@ -409,7 +409,6 @@
                         <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
                     </svg>
                 </a>
-                <span class="text-[13px] text-gray-400">{{ count($latestAnimals) }} hewan tersedia</span>
             </div>
             @endif
         </div>

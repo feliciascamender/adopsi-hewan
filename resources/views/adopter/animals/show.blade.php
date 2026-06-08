@@ -1,7 +1,9 @@
 @extends('layouts.adopter')
 
 
-@section('title', '{{ $animal->name }} — PawHome')
+@section('title')
+    Detail {{ $animal->name }} — PawHome
+@endsection
  
 @section('content')
  

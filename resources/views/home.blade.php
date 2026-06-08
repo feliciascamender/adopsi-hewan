@@ -257,7 +257,7 @@
                 <div class="absolute right-[-50px] bottom-[-50px] w-[200px] h-[200px] rounded-full bg-brand-light/10 group-hover:scale-125 transition-transform duration-500"></div>
                 <div class="absolute right-0 bottom-0 w-[110px] h-[110px] rounded-full bg-white/[0.04]"></div>
                 <div class="flex items-center gap-2.5 relative z-10">
-                    <span class="text-[20px] font-black tracking-[0.3em] text-white/25 uppercase">✨</span>
+                   <i class="fa-solid fa-star text-[20px] opacity-25 group-hover:opacity-100 transition-opacity duration-300" style="color: rgb(255, 213, 68);"></i>
                     <span class="w-px h-3 bg-white/20"></span>
                     <span class="text-xs font-bold text-white/50 transition-all duration-300 group-hover:text-white group-hover:text-lg">Siap Diadopsi</span>
                 </div>
@@ -266,7 +266,7 @@
                               group-hover:scale-[1.04] transition-transform duration-300 inline-block origin-left"
                        data-target="{{ $stats['available'] }}"
                        style="font-size: clamp(54px, 6vw, 86px);">0</p>
-                    <p class=" text-white/40 text-[16px] mt-2.5 font-extrabold tracking-wide">✨ Tersedia sekarang</p>
+                    <p class=" text-white/40 text-[16px] mt-2.5 font-extrabold tracking-wide"> <i class="fa-solid fa-star opacity-25" style="color: rgb(255, 213, 68);"></i> Tersedia sekarang</p>
                 </div>
                  <div class="absolute -right-9 -bottom-8 z-20 select-none
                         opacity-[0.1] group-hover:opacity-[0.9] group-hover:scale-110
@@ -286,7 +286,7 @@
                 <div class="absolute inset-0 bg-white opacity-0 group-hover:opacity-[0.08] transition-opacity duration-300 z-0"></div>
                 <div class="absolute right-[-50px] bottom-[-50px] w-[200px] h-[200px] rounded-full bg-brand-primary/[0.07] group-hover:scale-125 transition-transform duration-500"></div>
                 <div class="flex items-center gap-2.5 relative z-10">
-                    <span class="text-[20px] font-black tracking-[0.3em] text-brand-primary/25 uppercase">🐱</span>
+                    <i class="fa-solid fa-shield-cat text-[25px] opacity-25 group-hover:opacity-100 transition-opacity duration-300" style="color: rgb(214, 146, 15);"></i>
                     <span class="w-px h-3 bg-brand-primary/15"></span>
                     <span class="text-xs font-bold text-brand-secondary/50 transition-all duration-300 group-hover:text-brand-secondary group-hover:text-lg">Total Hewan</span>
                 </div>
@@ -295,7 +295,7 @@
                               group-hover:scale-[1.04] transition-transform duration-300 inline-block origin-left"
                        data-target="{{ $stats['total_animals'] }}"
                        style="font-size: clamp(54px, 6vw, 86px);">0</p>
-                    <p class="text-brand-primary/35 text-[16px] mt-2.5 font-semibold tracking-wide">🐱 Semua spesies</p>
+                    <p class="text-brand-primary/35 text-[16px] mt-2.5 font-semibold tracking-wide"> <i class="fa-solid fa-shield-cat text-[20px] opacity-25" style="color: rgb(214, 146, 15);"></i> Semua spesies</p>
                 </div>
                 <div class="absolute -right-7 -bottom-7 z-20 select-none
                 opacity-[0.1] group-hover:opacity-[0.9] group-hover:scale-110
@@ -315,7 +315,7 @@
                 <div class="absolute inset-0 bg-white opacity-0 group-hover:opacity-[0.08] transition-opacity duration-300 z-0"></div>
                 <div class="absolute right-[-50px] bottom-[-50px] w-[200px] h-[200px] rounded-full bg-status-adopted-text/[0.1] group-hover:scale-125 transition-transform duration-500"></div>
                 <div class="flex items-center gap-2.5 relative z-10">
-                    <span class="text-[20px] font-black tracking-[0.3em] text-status-adopted-text/25 uppercase">💜</span>
+                    <span class="text-[23px] font-black opacity-25 tracking-[0.3em] group-hover:opacity-100 transition-opacity duration-300">💜</span>
                     <span class="w-px h-3 bg-status-adopted-text/15"></span>
                     <span class="text-xs font-bold text-status-adopted-text/50 transition-all duration-300 group-hover:text-status-adopted group-hover:text-lg">Sudah Diadopsi</span>
                 </div>
@@ -342,7 +342,7 @@
                 <div class="absolute inset-0 bg-white opacity-0 group-hover:opacity-[0.08] transition-opacity duration-300 z-0"></div>
                 <div class="absolute right-[-50px] bottom-[-50px] w-[200px] h-[200px] rounded-full bg-accent-base/[0.25] group-hover:scale-125 transition-transform duration-500"></div>
                 <div class="flex items-center gap-2.5 relative z-10">
-                    <span class="text-[20px] font-black tracking-[0.3em] text-accent-strong/25 uppercase">🎀</span>
+                  <i class="fa-solid fa-house text-[22px] opacity-25 group-hover:opacity-100 transition-opacity duration-300" style="color: rgb(168, 48, 53);"></i>
                     <span class="w-px h-3 bg-accent-strong/15"></span>
                     <span class="text-xs font-bold text-accent-strong/50 transition-all duration-300 group-hover:text-accent-strong group-hover:text-lg">Adopsi Berhasil</span>
                 </div>
@@ -351,7 +351,7 @@
                               group-hover:scale-[1.04] transition-transform duration-300 inline-block origin-left"
                        data-target="{{ $stats['total_adoptions'] }}"
                        style="font-size: clamp(54px, 6vw, 86px);">0</p>
-                    <p class="text-accent-strong/35 text-[16px] mt-2.5 font-semibold tracking-wide">🎀 Disetujui admin</p>
+                    <p class="text-accent-strong/35 text-[16px] mt-2.5 font-semibold tracking-wide"> <i class="fa-solid fa-house text-[18px] opacity-25" style="color: rgb(168, 48, 53);"></i> Disetujui admin</p>
                 </div>
                <div class="absolute -right-3 -bottom-7 z-20 select-none
             opacity-[0.1] group-hover:opacity-[0.9] group-hover:scale-110
@@ -873,7 +873,7 @@
                 <div class="flex items-center gap-4 backdrop-blur-md bg-white/10 border border-brand-soft/20
                             rounded-2xl px-5 py-4"
                      style="box-shadow: 0 0 8px rgba(245,238,255,0.04);">
-                    <div class="w-10 h-10 rounded-xl bg-white/15 flex items-center justify-center text-lg flex-shrink-0">🐾</div>
+                    <i class="fa-solid fa-paw text-[23px]" style="color: #300947;"></i>
                     <div>
                         <p class="text-white/55 text-[11px] font-medium mb-0.5">Hewan tersedia</p>
                         <p class="font-brand font-extrabold text-white text-lg leading-none">120+</p>
@@ -887,7 +887,7 @@
                 <div class="flex items-center gap-4 backdrop-blur-md bg-white/10 border border-brand-soft/35
                             rounded-2xl px-5 py-4"
                      style="box-shadow: 0 0 12px rgba(245,238,255,0.07);">
-                    <div class="w-10 h-10 rounded-xl bg-brand-soft/20 flex items-center justify-center text-lg flex-shrink-0">🎀</div>
+                    <i class="fa-solid fa-house text-[23px]" style="color: #af4242;"></i>
                     <div>
                         <p class="text-brand-soft/70 text-[11px] font-medium mb-0.5">Adopsi berhasil</p>
                         <p class="font-brand font-extrabold text-brand-soft text-lg leading-none">80+</p>
@@ -901,7 +901,7 @@
                 <div class="flex items-center gap-4 backdrop-blur-md bg-white/10 border border-brand-soft/20
                             rounded-2xl px-5 py-4"
                      style="box-shadow: 0 0 8px rgba(245,238,255,0.04);">
-                    <div class="w-10 h-10 rounded-xl bg-white/15 flex items-center justify-center text-lg flex-shrink-0">✅</div>
+                    <i class="fa-solid fa-check text-[27px]" style="color: #419a4f;"></i>
                     <div>
                         <p class="text-white/55 text-[11px] font-medium mb-0.5">Diverifikasi oleh</p>
                         <p class="font-brand font-extrabold text-white text-[13px] leading-tight">PawHome Banjarmasin</p>

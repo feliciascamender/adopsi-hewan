@@ -8,9 +8,9 @@
  
 {{-- Header --}}
 <div class="flex items-start justify-between mt-6 mb-6">
-    <div>
+   <div class="flex-1 flex flex-col items-center text-center">
         <div class="inline-flex items-center gap-1.5 bg-brand-soft text-brand-secondary text-xs font-semibold px-3 py-1.5 rounded-full border border-brand-light mb-3">
-            📋 Riwayat adopsi
+            <i class="fa-solid fa-clipboard" style="color: #debd5b;"></i> Riwayat adopsi
         </div>
         <h1 class="font-brand font-black text-2xl text-surface-dark">Pengajuan Saya</h1>
     </div>

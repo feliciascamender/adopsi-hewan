@@ -61,7 +61,7 @@
         <div class="absolute right-[-20px] bottom-[-20px] w-24 h-24 rounded-full bg-brand-soft opacity-60 group-hover:opacity-80 transition-opacity"></div>
         <p class="text-xs font-semibold text-surface-muted mb-1 relative z-10">Total Pengajuan</p>
         <p class="font-brand font-black text-3xl text-brand-primary relative z-10">{{ $myAdoptions->count() }}</p>
-        <span class="text-xl absolute right-4 bottom-3 opacity-60 group-hover:opacity-90 group-hover:scale-110 transition-all duration-300">📋</span>
+        <i class="fa-solid fa-list-check text-2xl absolute right-4 bottom-3 opacity-60 group-hover:opacity-90 group-hover:scale-110 transition-all duration-300" style="color: #dbb23a;"></i>
     </div>
  
     {{-- Pending --}}
@@ -72,7 +72,7 @@
         <p class="font-brand font-black text-3xl text-status-pending-text relative z-10">
             {{ $myAdoptions->where('status', 'pending')->count() }}
         </p>
-        <span class="text-xl absolute right-4 bottom-3 opacity-60 group-hover:opacity-90 group-hover:scale-110 transition-all duration-300">⏳</span>
+        <i class="fa-solid fa-hourglass-half text-2xl absolute right-4 bottom-3 opacity-60 group-hover:opacity-90 group-hover:scale-110 transition-all duration-300" style="color: #debd5b;"></i>
     </div>
  
     {{-- Disetujui --}}
@@ -83,7 +83,7 @@
         <p class="font-brand font-black text-3xl text-status-available-text relative z-10">
             {{ $myAdoptions->where('status', 'approved')->count() }}
         </p>
-        <span class="text-xl absolute right-4 bottom-3 opacity-60 group-hover:opacity-90 group-hover:scale-110 transition-all duration-300">✅</span>
+         <i class="fa-solid fa-check text-3xl absolute right-4 bottom-3 opacity-60 group-hover:opacity-90 group-hover:scale-110 transition-all duration-300" style="color: #419a4f;"></i>
     </div>
  
     {{-- Ditolak --}}

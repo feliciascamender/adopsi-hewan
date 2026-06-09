@@ -14,6 +14,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@700;800&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
  
     @if (file_exists(public_path('build/manifest.json')) || file_exists(public_path('hot')))
         @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -53,7 +55,7 @@
                {{ request()->routeIs('adopter.dashboard')
                     ? 'bg-white text-brand-primary shadow-sm'
                     : 'text-white/70 hover:text-white hover:bg-white/10' }}">
-                <span class="text-base">🏠</span>
+                <i class="fa-solid fa-house-user" style="color: #debd5b;"></i>
                 <span class="hidden sm:block">Beranda</span>
             </a>
             <a href="{{ route('adopter.animals.index') }}"
@@ -61,7 +63,7 @@
                {{ request()->routeIs('adopter.animals.*')
                     ? 'bg-white text-brand-primary shadow-sm'
                     : 'text-white/70 hover:text-white hover:bg-white/10' }}">
-                <span class="text-base">🐾</span>
+                <i class="fa-solid fa-paw" style="color: #debd5b;"></i>
                 <span class="hidden sm:block">Cari Hewan</span>
             </a>
             <a href="{{ route('adopter.adoptions.index') }}"
@@ -69,7 +71,7 @@
                {{ request()->routeIs('adopter.adoptions.*')
                     ? 'bg-white text-brand-primary shadow-sm'
                     : 'text-white/70 hover:text-white hover:bg-white/10' }}">
-                <span class="text-base">📋</span>
+                <i class="fa-solid fa-clipboard" style="color: #debd5b;"></i>
                 <span class="hidden sm:block">Pengajuan</span>
             </a>
         </div>

@@ -11,17 +11,21 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\View\View;
 
-class AdoptionController extends Controller
+class AdoptionController extends Controller 
 {
-    public function index(): View
-    {
-        $adoptions = Adoption::with('animals.species')
-            ->where('user_id', auth()->id())
-            ->latest()
-            ->paginate(10);
+    public function index(Request $request): View
+{
+    $query = Adoption::with('animals.species')
+        ->where('user_id', auth()->id());
 
-        return view('adopter.adoptions.index', compact('adoptions'));
+    if ($request->filled('status')) {
+        $query->where('status', $request->status);
     }
+
+    $adoptions = $query->latest()->paginate(10);
+
+    return view('adopter.adoptions.index', compact('adoptions'));
+}
 
     public function create(): View|RedirectResponse
     {

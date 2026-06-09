@@ -324,7 +324,7 @@
  
         {{-- Proses review --}}
         <div class="bg-surface-white border border-surface-border rounded-2xl p-5">
-            <p class="text-xs font-bold text-surface-dark mb-3">📬 Setelah Submit</p>
+            <p class="text-xs font-bold text-surface-dark mb-3"><i class="fa-solid fa-inbox" style="color: #debd5b;"></i> Setelah Submit</p>
             <div class="space-y-2.5">
                 <div class="flex items-center gap-2.5">
                     <span class="w-5 h-5 rounded-full bg-status-pending-bg text-status-pending-text text-[10px] font-bold flex items-center justify-center flex-shrink-0">1</span>

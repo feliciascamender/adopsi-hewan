@@ -7,9 +7,9 @@
 @section('content')
  
 {{-- Page Header --}}
-<div class="mb-6 mt-6">
+<div class="mb-6 mt-6 ">
     <div class="inline-flex items-center gap-1.5 bg-brand-soft text-brand-secondary text-xs font-semibold px-3 py-1.5 rounded-full border border-brand-light mb-3">
-        🐾 Semua hewan tersedia
+       <i class="fa-solid fa-paw" style="color: #debd5b;"></i> Semua hewan tersedia
     </div>
     <h1 class="font-brand font-black text-2xl text-surface-dark">Cari Hewan</h1>
     <p class="text-sm text-surface-muted mt-1">Temukan sahabat berbulu yang tepat untukmu.</p>

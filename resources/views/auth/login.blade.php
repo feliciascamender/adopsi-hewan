@@ -104,7 +104,49 @@
                            class="w-4 h-4 rounded-lg border-white/30 accent-accent-base cursor-pointer">
                     <label for="remember" class="text-sm text-white/60 cursor-pointer">Ingat saya</label>
                 </div>
- 
+ {{-- Lupa Password --}}
+<div>
+    <button type="button" id="toggleForgot"
+            class="text-xs text-white/40 hover:text-white/70 transition-colors duration-200 flex items-center gap-1">
+        <span>Lupa password?</span>
+        <svg id="forgotArrow" xmlns="http://www.w3.org/2000/svg" class="w-3 h-3 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+        </svg>
+    </button>
+
+    {{-- Dropdown info kontak --}}
+    <div id="forgotInfo" class="hidden mt-3 bg-white/10 border border-white/15 rounded-2xl px-4 py-4 space-y-3">
+        <p class="text-xs text-white/60 leading-relaxed">
+            Hubungi admin PawHome untuk reset password kamu:
+        </p>
+        <a href="mailto:pawhomeadmin@gmail.com"
+           class="flex items-center gap-3 bg-white/10 hover:bg-white/15 rounded-xl px-3 py-2.5 transition-colors duration-200">
+            <div class="w-7 h-7 rounded-lg bg-accent-base/20 flex items-center justify-center flex-shrink-0">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5 text-accent-base" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                </svg>
+            </div>
+            <div>
+                <p class="text-[10px] text-white/40">Email</p>
+                <p class="text-xs font-semibold text-white">pawhomeadmin@gmail.com</p>
+            </div>
+        </a>
+        <a href="https://wa.me/6289529015125"
+           target="_blank"
+           class="flex items-center gap-3 bg-white/10 hover:bg-white/15 rounded-xl px-3 py-2.5 transition-colors duration-200">
+            <div class="w-7 h-7 rounded-lg bg-green-500/20 flex items-center justify-center flex-shrink-0">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5 text-green-400" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+                    <path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.118 1.528 5.849L.057 23.55a.75.75 0 00.921.921l5.701-1.471A11.943 11.943 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.891 0-3.667-.502-5.198-1.381l-.374-.217-3.876.999 1.02-3.762-.237-.389A9.958 9.958 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/>
+                </svg>
+            </div>
+            <div>
+                <p class="text-[10px] text-white/40">WhatsApp</p>
+                <p class="text-xs font-semibold text-white">089529015125</p>
+            </div>
+        </a>
+    </div>
+</div>
             </form>
  
             {{-- Divider --}}
@@ -163,6 +205,12 @@
             : '{{ asset("images/passcat1.png") }}'
         );
     });
+
+    // Toggle lupa password
+$('#toggleForgot').on('click', function () {
+    $('#forgotInfo').toggleClass('hidden');
+    $('#forgotArrow').toggleClass('rotate-180');
+});
 </script>
 @endpush
  
